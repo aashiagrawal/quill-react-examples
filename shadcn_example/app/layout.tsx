@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { QuillProvider, Dashboard } from "@quillsql/react";
+import Navbar from '@/components/Navbar';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={inter.className}>
-          <QuillProvider organizationId='2' publicKey='62cda15d7c9fcca7bc0a3689'>
+          <QuillProvider organizationId='2' publicKey='6579031b3e41c378aa8180ec'>
+            <Navbar></Navbar>
             <>{children}</>
           </QuillProvider>
         </body>
