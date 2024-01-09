@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
 
 const initialNavigation = [
   { name: 'Dashboard', baseHref: '', current: true, href:'/' },
@@ -59,18 +68,50 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Dropdown for selecting the option */}
-            <div className="flex items-center">
-              <select
-                value={selectedOption}
-                onChange={(e) => setSelectedOption(e.target.value)}
-                className="rounded-md bg-gray-700 text-white"
+            <div className="hidden md:flex space-x-4">
+              {/* Option: Default */}
+              <a
+                key="default"
+                onClick={() => setSelectedOption('default')}
+                className={classNames(
+                  selectedOption === 'default'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
+                )}
               >
-                <option value="default">Default</option>
-                <option value="shadcn">Shadcn</option>
-                <option value="material-ui">Material UI</option>
-              </select>
+                Default
+              </a>
+
+              {/* Option: Shadcn */}
+              <a
+                key="shadcn"
+                onClick={() => setSelectedOption('shadcn')}
+                className={classNames(
+                  selectedOption === 'shadcn'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
+                )}
+              >
+                Shadcn
+              </a>
+
+              {/* Option: Material UI */}
+              <a
+                key="material-ui"
+                onClick={() => setSelectedOption('material-ui')}
+                className={classNames(
+                  selectedOption === 'material-ui'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
+                )}
+              >
+                Material UI
+              </a>
             </div>
+
           </div>
         </div>
       )}
