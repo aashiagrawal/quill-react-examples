@@ -39,9 +39,7 @@ export function ShadcnPopover({
 
     setIsOpen(open)
   }
-
-  console.log("style ", style)
-
+  
   return (
     <Popover open={isOpen} onOpenChange={onOpenChangeHandler}>
       {

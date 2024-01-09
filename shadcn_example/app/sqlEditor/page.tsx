@@ -1,9 +1,12 @@
+"use client"
 import React from 'react'
-import { SQLEditor } from '@quillsql/react'
+import SQLEditorExample from '@/quill_components/SQLEditorExample'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <SQLEditorExample></SQLEditorExample>
+    </div>
   )
 }
 

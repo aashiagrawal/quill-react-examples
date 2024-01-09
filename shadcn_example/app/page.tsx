@@ -1,6 +1,5 @@
 'use client'
-import DashExample from '@/quill_components/dashboard'
-import { Dashboard } from '@quillsql/react'
+import DashExample from '@/quill_components/DashboardExample'
 
 export default function Home() {
   return (

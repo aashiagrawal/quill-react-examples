@@ -18,8 +18,6 @@ export default function DashExample() {
   return (
     <>
       <div className="min-h-full">
-        
-
         <div className="py-10">
           <header>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -28,6 +26,7 @@ export default function DashExample() {
           </header>
           <main>
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+              
             <Dashboard
               name="transactions"
               containerStyle={{
@@ -50,7 +49,7 @@ export default function DashExample() {
                 preset = "defaultPreset", 
                 theme = {} 
             }) => (
-                <div>
+                <div className="flex">
                     <ShadcnDatePickerAdapter 
                       dateRange={dateRange}
                       label={label}

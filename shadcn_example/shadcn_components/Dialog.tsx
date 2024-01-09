@@ -36,11 +36,11 @@ export function DialogCloseButton({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChangeHandler}>
+    <Dialog open={isOpen} onOpenChange={onOpenChangeHandler} >
       <DialogTrigger asChild>
         <Button variant="outline">Open Dialog</Button>
       </DialogTrigger>
-      <DialogContent className={`sm:max-w-md ${theme?.dialogContentClass}`}>
+      <DialogContent className="h-4/5 overflow-y-auto w-full" >
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
@@ -56,3 +56,5 @@ export function DialogCloseButton({
     </Dialog>
   );
 }
+
+// style={"pointer-events: auto; height: 85vh; overflow-y: scroll;"}
