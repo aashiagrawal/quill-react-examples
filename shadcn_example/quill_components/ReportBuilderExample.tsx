@@ -1,5 +1,5 @@
 'use client'
-import React, {useRef, useState, useEffect} from 'react'
+import React, {useRef, useState, useEffect, useContext} from 'react'
 import { ReportBuilder } from '@quillsql/react'
 import { SelectScrollable } from '@/shadcn_components/SelectScrollable'
 import { TextInput } from '@/shadcn_components/TextInput'
@@ -28,12 +28,15 @@ import Paper from "@mui/material/Paper";
 import Dialog, { DialogProps } from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { StyleContext } from '@/context/StyleContext'
 
 type ReportBuilderProps = {
   uiname: string
 }
 
 export default function ReportBuilderExample ({uiname}:ReportBuilderProps) {
+
+    const { style, setStyle } = useContext(StyleContext);
     const onChangeQuery = (query: string) => {
         console.log(query)
     }
@@ -42,7 +45,7 @@ export default function ReportBuilderExample ({uiname}:ReportBuilderProps) {
     }
 
     const renderReportBuilder = () => {
-      switch(uiname) {
+      switch(style) {
         case 'default':
           return (
             <ReportBuilder

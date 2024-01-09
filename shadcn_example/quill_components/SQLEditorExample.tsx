@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useContext } from 'react'
 import { SQLEditor } from '@quillsql/react'
 import { ButtonDemo } from '@/shadcn_components/Button'
 import { TextInput } from '@/shadcn_components/TextInput'
@@ -25,15 +25,17 @@ import Paper from "@mui/material/Paper";
 import Dialog, { DialogProps } from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { StyleContext } from '@/context/StyleContext'
 
 type SQLEditorProps = {
   uiname: string
 }
 
 export default function SQLEditorExample ({uiname}:SQLEditorProps) {
+  const { style, setStyle } = useContext(StyleContext);
 
   const renderSqlEditor = () => {
-    switch(uiname) {
+    switch(style) {
       case 'default':
         return (
           <SQLEditor

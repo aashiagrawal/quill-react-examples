@@ -1,4 +1,4 @@
-import { Fragment, useState} from 'react'
+import { Fragment, useContext, useState, useEffect} from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Dashboard } from '@quillsql/react'
 import { DateRange } from '@quillsql/react/src/DateRangePicker/DateRangePicker'
@@ -13,12 +13,19 @@ import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { StyleContext } from '@/context/StyleContext'
 
 type DashboardProps = {
   uiname:string
 }
 
 export default function DashExample({uiname}:DashboardProps) {
+  const { style, setStyle } = useContext(StyleContext);
+
+  // useEffect(() => {
+  //   console.log("style in line 26 is: ", style)
+
+  // }, [style]);
 
   const dateProp: DateRange = [new Date(2022, 0, 20), addDays(new Date(2022, 0, 20), 20)];
   const [selection, setSelection] = useState("")
@@ -27,18 +34,18 @@ export default function DashExample({uiname}:DashboardProps) {
   }
 
   const renderDashboard = () => {
-    switch(uiname) {
+    switch(style) {
       case 'default':
         return (
           <Dashboard
-          name="transactions"
-          containerStyle={{
-            paddingLeft: 25,
-            paddingRight: 25,
-            paddingTop: 50,
-            width: "100%",
-          }}
-        />
+            name="transactions"
+            containerStyle={{
+              paddingLeft: 25,
+              paddingRight: 25,
+              paddingTop: 50,
+              width: "100%",
+            }}
+          />
         )
       case 'shadcn':
         return (

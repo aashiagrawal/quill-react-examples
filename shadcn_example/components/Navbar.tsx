@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
+import { StyleContext } from '@/context/StyleContext'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -22,19 +23,28 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+  const { style, setStyle } = useContext(StyleContext);
+
   const [navigation, setNavigation] = useState(initialNavigation);
   const [activeItem, setActiveItem] = useState('Dashboard');
   const [selectedOption, setSelectedOption] = useState('default');
 
   useEffect(() => {
     console.log(selectedOption);
+    console.log("currStyle is: ", style)
+
+    // Updating global style in StyleContext
+    setStyle(selectedOption)
+
     const updatedNavigation = navigation.map((item) => ({
       ...item,
       href: `${item.baseHref}/${selectedOption}`,
       current: item.name === activeItem,
     }));
+
     console.log(updatedNavigation);
     setNavigation(updatedNavigation);
+
   }, [activeItem, selectedOption]);
 
   return (
