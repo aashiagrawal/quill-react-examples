@@ -29,154 +29,175 @@ import Dialog, { DialogProps } from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function ReportBuilderExample () {
+type ReportBuilderProps = {
+  uiname: string
+}
+
+export default function ReportBuilderExample ({uiname}:ReportBuilderProps) {
     const onChangeQuery = (query: string) => {
         console.log(query)
     }
     const onChangeDate= (data: object[]) => {
         console.log(data)
     }
-  return (
-    <div>
-        {/* <ReportBuilder
+
+    const renderReportBuilder = () => {
+      switch(uiname) {
+        case 'default':
+          return (
+            <ReportBuilder
+            onChangeQuery={onChangeQuery}
+            containerStyle={{ padding: 20 }}
+            // @ts-ignore
+            onChangeData= {onChangeDate}
+            onChangeColumns={onChangeDate}
+            onError={(error) => console.log("ERROR: ", error)}
+            tableName="transactions"
+            dateColumn="created_at"
+            chartBuilderEnabled
+          />
+          )
+        case 'shadcn':
+          return (
+            <ReportBuilder
             chartBuilderEnabled
             containerStyle={{ padding: 20 }}
             onChangeQuery={onChangeQuery}
             onChangeData= {onChangeDate}
             onChangeColumns={onChangeDate}
             onError={onChangeQuery}
-            // Table={({
-            // columns=[],
-            // rows=[],
-            // height=""
-            // }) => (
-            // <div>
-            //     <TableDemo
-            //     columns={columns}
-            //     rows={rows}
-            //     height={height}
-            //     />
-            // </div>
-            // )}
+            Table={({
+            columns=[],
+            rows=[],
+            height=""
+            }) => (
+            <div>
+                <TableDemo
+                columns={columns}
+                rows={rows}
+                height={height}
+                />
+            </div>
+            )}
             tableName="transactions"
             dateColumn="created_at"
-            // Select={({
-            //     label="Filters",
-            //     onChange = (value: string) => console.log("filter value changed to: ", value),
-            //     value = "defaultValue",
-            //     options= []
-            // }) => (
-            //     <div>
-            //     <SelectScrollable
-            //         label={label}
-            //         options= {options}
-            //         onChange={onChange}
-            //         value={value}
-            //     />
-            //     </div>
-            // )} 
-            // TextInput={({
-            //     onChange = (e: any) => console.log("called on change"),
-            //     value= "",
-            //     id=""
-            //     }) => (
-            //     <div>
-            //         <TextInput
-            //         onChange={onChange}
-            //         value={value}
-            //         id={id}
-            //         />
-            //     </div>
-            //     )}
-            // Button={({
-            //     onClick= () => console.log("clicked"),
-            //     label="",
-            //     primary=true
-            // }) => (           
-            //     <div>
-            //     <ButtonDemo
-            //     onClick={onClick}
-            //     label={label}
-            //     primary={primary}
-            //     isDeleteButton={false}/>
-            // </div>
-            // )}
-            // SecondaryButton={({
-            //     onClick= () => console.log("clicked"),
-            //     label="",
-            //     primary=false
+            Select={({
+                label="Filters",
+                onChange = (value: string) => console.log("filter value changed to: ", value),
+                value = "defaultValue",
+                options= []
+            }) => (
+                <div>
+                <SelectScrollable
+                    label={label}
+                    options= {options}
+                    onChange={onChange}
+                    value={value}
+                />
+                </div>
+            )} 
+            TextInput={({
+                onChange = (e: any) => console.log("called on change"),
+                value= "",
+                id=""
+                }) => (
+                <div>
+                    <TextInput
+                    onChange={onChange}
+                    value={value}
+                    id={id}
+                    />
+                </div>
+                )}
+            Button={({
+                onClick= () => console.log("clicked"),
+                label="",
+                primary=true
+            }) => (           
+                <div>
+                <ButtonDemo
+                onClick={onClick}
+                label={label}
+                primary={primary}
+                isDeleteButton={false}/>
+            </div>
+            )}
+            SecondaryButton={({
+                onClick= () => console.log("clicked"),
+                label="",
+                primary=false
                 
-            // }) => (           
-            //     <div>
-            //         <ButtonDemo
-            //         onClick={onClick}
-            //         label={label}
-            //         primary={primary}
-            //         isDeleteButton={false}/>
-            //     </div>
-            // )}
-            // DeleteButton={({
-            //     onClick= () => console.log("clicked"),
-            //     label="",
-            //     primary=false,
-            // }) => (           
-            //     <div>
-            //         <ButtonDemo
-            //         onClick={onClick}
-            //         label={label}
-            //         primary={primary}
-            //         isDeleteButton={true}/>
-            //     </div>
-            // )}
-            // Label={({
-            //     children=""
-            // }) => (
-            //     <LabelDemo
-            //     >{children}</LabelDemo>
-            // )}
-            // Modal={({
-            //     children={},
-            //     isOpen= false,
-            //     onClose= () => console.log("closed modal"),
-            //     title="Add Filter",
-            //     setIsOpen=(open) => isOpen=open
-            // }) => (
-            //     <div >
-            //         <DialogCloseButton
-            //         isOpen={isOpen}
-            //         onClose={onClose}
-            //         title={title}
-            //         setIsOpen={setIsOpen}
-            //         >{children}</DialogCloseButton>
-            //     </div>
-            // )}
-            // Popover={({
-            //     children={},
-            //     onClose=() => console.log("closed popover"),
-            //     isOpen=false,
-            //     setIsOpen=(open) => isOpen=open,
-            //     showTrigger=true,
-            //     parentRef=useRef(),
-            //     label="",
-            //     style={"min-width": 200}
-            // }) => (
-            //     <ShadcnPopover
-            //         onClose={onClose}
-            //         isOpen={isOpen}
-            //         setIsOpen={setIsOpen}
-            //         showTrigger={showTrigger}
-            //         parentRef= {parentRef}
-            //         label={label}
-            //         style={style}
+            }) => (           
+                <div>
+                    <ButtonDemo
+                    onClick={onClick}
+                    label={label}
+                    primary={primary}
+                    isDeleteButton={false}/>
+                </div>
+            )}
+            DeleteButton={({
+                onClick= () => console.log("clicked"),
+                label="",
+                primary=false,
+            }) => (           
+                <div>
+                    <ButtonDemo
+                    onClick={onClick}
+                    label={label}
+                    primary={primary}
+                    isDeleteButton={true}/>
+                </div>
+            )}
+            Label={({
+                children=""
+            }) => (
+                <LabelDemo
+                >{children}</LabelDemo>
+            )}
+            Modal={({
+                children={},
+                isOpen= false,
+                onClose= () => console.log("closed modal"),
+                title="Add Filter",
+                setIsOpen=(open) => isOpen=open
+            }) => (
+                <div >
+                    <DialogCloseButton
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    title={title}
+                    setIsOpen={setIsOpen}
+                    >{children}</DialogCloseButton>
+                </div>
+            )}
+            Popover={({
+                children={},
+                onClose=() => console.log("closed popover"),
+                isOpen=false,
+                setIsOpen=(open) => isOpen=open,
+                showTrigger=true,
+                parentRef=useRef(),
+                label="",
+                style={"min-width": 200}
+            }) => (
+                <ShadcnPopover
+                    onClose={onClose}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    showTrigger={showTrigger}
+                    parentRef= {parentRef}
+                    label={label}
+                    style={style}
                     
-            //     >{children}</ShadcnPopover>
-            // )}
+                >{children}</ShadcnPopover>
+            )}
         >
-        </ReportBuilder> */}
-
-        {/*material UI report builder*/}
-
-        <ReportBuilder
+        </ReportBuilder>
+          )
+        case 'material-ui':
+          return (
+            <ReportBuilder
             chartBuilderEnabled
             containerStyle={{ padding: 20 }}
             onChangeQuery={onChangeQuery}
@@ -406,7 +427,13 @@ export default function ReportBuilderExample () {
           }}
 
         />
+          )
+      }
+    }
 
+  return (
+    <div>
+        {renderReportBuilder()}
     </div>
   )
 }

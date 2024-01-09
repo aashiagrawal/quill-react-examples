@@ -2,10 +2,11 @@
 import React from 'react'
 import ReportBuilderExample from '@/quill_components/ReportBuilderExample'
 
-const page = () => {
+const page = ({ params }: { params: { name: string } }) => {
+
   return (
     <div>
-      <ReportBuilderExample></ReportBuilderExample>
+      <ReportBuilderExample uiname={ decodeURIComponent(params.name)}></ReportBuilderExample>
     </div>
   )
 }
