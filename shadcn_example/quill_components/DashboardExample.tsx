@@ -162,9 +162,7 @@ export default function DashExample({uiname}:DashboardProps) {
             DashboardItemComponent={({ dashboardItem, children }) => {
               return (
                 <Card>
-                  <CardHeader>
-                      {dashboardItem.name}
-                  </CardHeader>
+                  <CardHeader title={dashboardItem.name}/>
                   <CardContent>{children}</CardContent>
                 </Card>
               );
