@@ -38,15 +38,15 @@ export default function DashExample({uiname}:DashboardProps) {
     switch(style) {
       case 'default':
         return (
-          <Dashboard
-            name="transactions"
-            containerStyle={{
-              paddingLeft: 25,
-              paddingRight: 25,
-              paddingTop: 50,
-              width: "100%",
-            }}
-          />
+            <Dashboard
+              name="transactions"
+              containerStyle={{
+                paddingLeft: 25,
+                paddingRight: 25,
+                paddingTop: 50,
+                width: "100%",
+              }}
+            />
         )
       case 'shadcn':
         return (

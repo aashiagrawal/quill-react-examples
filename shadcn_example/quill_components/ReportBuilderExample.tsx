@@ -195,8 +195,7 @@ export default function ReportBuilderExample ({uiname}:ReportBuilderProps) {
                     
                 >{children}</ShadcnPopover>
             )}
-        >
-        </ReportBuilder>
+        />
           )
         case 'material-ui':
           return (
