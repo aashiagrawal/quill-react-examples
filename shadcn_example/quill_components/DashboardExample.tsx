@@ -1,5 +1,4 @@
 import { Fragment, useContext, useState, useEffect} from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Dashboard } from '@quillsql/react'
 import { DateRange } from '@quillsql/react/src/DateRangePicker/DateRangePicker'
 import { addDays} from "date-fns"
@@ -14,6 +13,8 @@ import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDa
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { StyleContext } from '@/context/StyleContext'
+import { CardComponent } from '@/shadcn_components/CardComponent'
+import { CardHeader, CardContent, Card } from '@mui/material'
 
 type DashboardProps = {
   uiname:string
@@ -57,9 +58,30 @@ export default function DashExample({uiname}:DashboardProps) {
                 paddingTop: 30,
                 width: "100%",
               }}
+
+              FilterDropdownComponent={({ 
+                label = "Date", 
+                options = [
+                    { value: 'wk', text: 'This week' },
+                    { value: 'w', text: 'Last 7 days' },
+                    { value: 't', text: 'Last 30 days' }
+                ], 
+                onChange = (preset) => console.log("Preset Changed:", preset), 
+                value = ""
+            }) => (
+                <div className="flex">
+                    <SelectScrollable
+                      label={label}
+                      options={[{"label": "", "value": "This week"}, {"label": "", "value": "Last 7 days"}, {"label": "", "value": "Last 30 days"}]}
+                      onChange={handleSelectChange}
+                      value={selection}
+                    />
+                </div>
+            )}
+
               DateRangePickerComponent={({ 
                 dateRange = dateProp as DateRange,
-                label = "Select Date Range", 
+                label = "", 
                 onChangeDateRange = (value: DateRange) => console.log("Date Range Changed:", value), 
                 selectedPreset = "lastMonth", 
                 presetOptions = [
@@ -86,10 +108,20 @@ export default function DashExample({uiname}:DashboardProps) {
                       label="Select preset"
                       options={[{"label": "", "value": "This week"}, {"label": "", "value": "Last 7 days"}, {"label": "", "value": "Last 30 days"}]}
                       onChange={handleSelectChange}
-                      value={selection}
+                      value={preset}
                     />
+
+
                 </div>
             )}
+            DashboardItemComponent={({ dashboardItem, children }) => {
+              return (
+                <CardComponent
+                  dashboardName={dashboardItem.name}
+                  children={children}
+                />
+              );
+            }}
             /> 
         )
         case 'material-ui':
@@ -127,6 +159,16 @@ export default function DashExample({uiname}:DashboardProps) {
                 />
               </LocalizationProvider>
             )}
+            DashboardItemComponent={({ dashboardItem, children }) => {
+              return (
+                <Card>
+                  <CardHeader>
+                      {dashboardItem.name}
+                  </CardHeader>
+                  <CardContent>{children}</CardContent>
+                </Card>
+              );
+            }}
             />
           )
     }
