@@ -29,6 +29,11 @@ import Dialog, { DialogProps } from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { StyleContext } from '@/context/StyleContext'
+import { Anybody } from 'next/font/google'
+import { CardComponent } from '@/shadcn_components/CardComponent'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { CardActionArea } from '@mui/material'
 
 export default function ReportBuilderExample () {
 
@@ -190,6 +195,9 @@ export default function ReportBuilderExample () {
                     style={style}
                     
                 >{children}</ShadcnPopover>
+            )}
+            Card={({ onClick, clickable, onClose, minHeight, children }) => (
+              <CardComponent children={children} onClick={onClick}/>
             )}
         />
           )

@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState, useEffect} from 'react'
 import { Dashboard } from '@quillsql/react'
-import { DateRange } from '@quillsql/react/src/DateRangePicker/DateRangePicker'
+import { DateRange, DateRangePickerOption } from '@quillsql/react/src/DateRangePicker/DateRangePicker'
 import { addDays} from "date-fns"
 import ShadcnDatePickerAdapter from '@/adapters/ShadcnDatePickerAdapter'
 import { SelectScrollable } from '@/shadcn_components/SelectScrollable'
@@ -14,7 +14,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { StyleContext } from '@/context/StyleContext'
 import { CardComponent } from '@/shadcn_components/CardComponent'
-import { CardHeader, CardContent, Card } from '@mui/material'
+import { CardHeader, CardContent, Card, Typography } from '@mui/material'
+import { LabelDemo } from '@/shadcn_components/Label'
 
 export default function DashExample() {
   const { style, setStyle} = useContext(StyleContext);
@@ -53,18 +54,14 @@ export default function DashExample() {
 
               FilterDropdownComponent={({ 
                 label = "Date", 
-                options = [
-                    { value: 'wk', text: 'This week' },
-                    { value: 'w', text: 'Last 7 days' },
-                    { value: 't', text: 'Last 30 days' }
-                ], 
+                options = [], 
                 onChange = (preset) => console.log("Preset Changed:", preset), 
                 value = ""
             }) => (
                 <div className="flex">
                     <SelectScrollable
                       label={label}
-                      options={[{"label": "", "value": "This week"}, {"label": "", "value": "Last 7 days"}, {"label": "", "value": "Last 30 days"}]}
+                      options={options}
                       onChange={handleSelectChange}
                       value={selection}
                     />
@@ -73,38 +70,36 @@ export default function DashExample() {
 
               DateRangePickerComponent={({ 
                 dateRange = dateProp as DateRange,
-                label = "", 
-                onChangeDateRange = (value: DateRange) => console.log("Date Range Changed:", value), 
-                selectedPreset = "lastMonth", 
-                presetOptions = [
-                    { value: 'wk', text: 'This week' },
-                    { value: 'w', text: 'Last 7 days' },
-                    { value: 't', text: 'Last 30 days' }
-                ], 
-                onChangePreset = (preset) => console.log("Preset Changed:", preset), 
-                preset = "defaultPreset", 
+                label = {}, 
+                onChangeDateRange = (value: DateRange) => {}, 
+                selectedPreset = "", 
+                presetOptions = [],
+                onChangePreset = (preset: DateRangePickerOption) => {}, 
+                preset = "", 
                 theme = {} 
             }) => (
+              <div>
+                <div style={{"marginBottom": 9, "marginTop": 24}}>
+                  <LabelDemo children={label}/>
+                </div>
                 <div className="flex">
+                  <div style={{"marginRight": 10}}>
                     <ShadcnDatePickerAdapter 
                       dateRange={dateRange}
                       label={label}
                       onChangeDateRange={onChangeDateRange}
-                      selectedPreset={selectedPreset}
-                      presetOptions={presetOptions}
-                      onChangePreset={onChangePreset}
-                      preset={preset}
-                      theme={theme}
                     />
+                  </div>
+                  <div>
                     <SelectScrollable
-                      label="Select preset"
-                      options={[{"label": "", "value": "This week"}, {"label": "", "value": "Last 7 days"}, {"label": "", "value": "Last 30 days"}]}
-                      onChange={handleSelectChange}
+                      label={label}
+                      options={presetOptions}
+                      onChange= {onChangePreset}
                       value={preset}
                     />
-
-
+                  </div>
                 </div>
+              </div>
             )}
             DashboardItemComponent={({ dashboardItem, children }) => {
               return (
@@ -143,13 +138,51 @@ export default function DashExample() {
                 </Select>
               </FormControl>
             )}
-            DateRangePickerComponent={({}) => (
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateRangePicker
-                  slots={{ field: SingleInputDateRangeField }}
-                  name="allowedRange"
-                />
-              </LocalizationProvider>
+            DateRangePickerComponent={({ 
+                  dateRange = dateProp as DateRange,
+                  label = {}, 
+                  onChangeDateRange = (value: DateRange) => {}, 
+                  selectedPreset = "", 
+                  presetOptions = [],
+                  onChangePreset = (preset: DateRangePickerOption) => {}, 
+                  preset = "", 
+                  theme = {} 
+              }) => (
+                <div style={{"marginTop": 24}}>
+                  <Typography
+                    style={{ marginBottom: 12, fontWeight: "600", fontSize: 14 }}
+                  >
+                    {label}
+                  </Typography>
+
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <div className="flex">
+                      <div style={{"marginRight": 10}}>
+                        <DateRangePicker
+                          slots={{ field: SingleInputDateRangeField }}
+                          name="allowedRange"
+                        />
+                      </div>
+                      <div>
+                        <FormControl>
+                          <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value=""
+                            label={label}
+                            style={{ width: 230 }}
+                            onChange={onChangePreset}
+                          >
+                            {presetOptions.map((option) => (
+                              <MenuItem value={option.value}>{option.text}</MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </div>
+                    </div>
+                  </LocalizationProvider>
+                </div>
             )}
             DashboardItemComponent={({ dashboardItem, children }) => {
               return (

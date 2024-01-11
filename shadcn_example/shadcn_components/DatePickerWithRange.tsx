@@ -13,32 +13,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { DateRangePickerOption } from "@quillsql/react/src/DateRangePicker/DateRangePicker"
 
 type ShadcnDateRangePickerComponentProps = {
   className: string
   dateRange:DateRange,
   onChangeDateRange: (value: DateRange) => void,
-  presetOptions: DateRangePickerOption[],
-  onChangePreset: (preset: DateRangePickerOption) => void,
-  preset: string,
-  theme: any,
-  selectedPreset: string
 }
   
-// interface QuillShadcnDateRangePickerComponentProps extends Omit<ShadcnDateRangePickerComponentProps & DateRangePickerProps, "className"> {
-//   className: string
-// }
 
 export function DatePickerWithRange({
   className,
   dateRange, 
   onChangeDateRange,
-  presetOptions,
-  onChangePreset,
-  preset,
-  theme,
-  selectedPreset
 }: ShadcnDateRangePickerComponentProps) {
 
   const [date, setDate] = React.useState<DateRange | undefined>({

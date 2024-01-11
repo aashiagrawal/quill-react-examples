@@ -12,11 +12,6 @@ type ShadcnDatePickerAdapterProps = {
     dateRange: DateRange;
     label: string;
     onChangeDateRange: (value: DateRange) => void;
-    selectedPreset: string;
-    presetOptions: DateRangePickerOption[];
-    onChangePreset: (preset: DateRangePickerOption) => void;
-    preset: string;
-    theme: any;
 };
 
 const ShadcnDatePickerAdapter = (props: ShadcnDatePickerAdapterProps) => {
@@ -32,7 +27,7 @@ const ShadcnDatePickerAdapter = (props: ShadcnDatePickerAdapterProps) => {
     };
     
   return (
-    <DatePickerWithRange className="" dateRange={transformedDateRange} onChangeDateRange={onChangeDateRangeTransformed} selectedPreset = {props.selectedPreset} presetOptions={props.presetOptions} onChangePreset={props.onChangePreset} preset={props.preset} theme={props.theme}></DatePickerWithRange>
+    <DatePickerWithRange className="" dateRange={transformedDateRange} onChangeDateRange={onChangeDateRangeTransformed}></DatePickerWithRange>
   )
 }
 

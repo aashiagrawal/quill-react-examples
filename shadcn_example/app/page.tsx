@@ -2,7 +2,6 @@
 import { StyleContext } from '@/context/StyleContext';
 import DashExample from '@/quill_components/DashboardExample'
 import { useContext, useEffect, useState } from 'react';
-import codeSnippets from "../code-snippets.json";
 
 import hljs from 'highlight.js/lib/core';
 import typescript from 'highlight.js/lib/languages/typescript';
