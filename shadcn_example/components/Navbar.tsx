@@ -5,7 +5,7 @@ import { StyleContext } from '@/context/StyleContext'
 import { Toggle } from './ui/toggle';
 
 const initialNavigation = [
-  { name: 'Dashboard', baseHref: '', current: true, href:'/' },
+  { name: 'Dashboard', current: true, href:'/' },
   { name: 'Report Builder', baseHref: '/reportBuilder', current: false, href:'/reportBuilder' },
   { name: 'SQL Editor', baseHref: '/sqlEditor', current: false, href:'/sqlEditor' },
 ];
@@ -15,13 +15,13 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const { style, setStyle } = useContext(StyleContext);
+  const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
 
   const [navigation, setNavigation] = useState(initialNavigation);
   const [activeItem, setActiveItem] = useState('Dashboard');
   const [selectedOption, setSelectedOption] = useState('default');
 
-  const [showCode, setShowCode] = useState(false);
+  // const [showCode, setShowCode] = useState(false);
 
   useEffect(() => {
     console.log(selectedOption);
@@ -32,11 +32,11 @@ const Navbar = () => {
 
     const updatedNavigation = navigation.map((item) => ({
       ...item,
-      href: `${item.baseHref}/${selectedOption}`,
+      href: `${item.href}`,
       current: item.name === activeItem,
     }));
 
-    console.log(updatedNavigation);
+    // console.log(updatedNavigation);
     setNavigation(updatedNavigation);
 
   }, [activeItem, selectedOption]);
@@ -115,7 +115,12 @@ const Navbar = () => {
                 Material UI
               </a>
 
-              <Toggle aria-label="Toggle italic" onClick={() => setShowCode(!showCode)}>
+              <Toggle aria-label="Toggle italic" onClick={() => setShowCode(!showCode)} className={classNames(
+                  selectedOption === 'material-ui'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
+                )}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                   <path fillRule="evenodd" d="M6.28 5.22a.75.75 0 0 1 0 1.06L2.56 10l3.72 3.72a.75.75 0 0 1-1.06 1.06L.97 10.53a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Zm7.44 0a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L17.44 10l-3.72-3.72a.75.75 0 0 1 0-1.06ZM11.377 2.011a.75.75 0 0 1 .612.867l-2.5 14.5a.75.75 0 0 1-1.478-.255l2.5-14.5a.75.75 0 0 1 .866-.612Z" clipRule="evenodd" />
                 </svg>

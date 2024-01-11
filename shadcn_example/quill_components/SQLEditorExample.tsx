@@ -27,21 +27,20 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { StyleContext } from '@/context/StyleContext'
 
-type SQLEditorProps = {
-  uiname: string
-}
 
-export default function SQLEditorExample ({uiname}:SQLEditorProps) {
+export default function SQLEditorExample () {
   const { style, setStyle } = useContext(StyleContext);
 
   const renderSqlEditor = () => {
     switch(style) {
       case 'default':
         return (
-          <SQLEditor
-            chartBuilderEnabled
-            containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-          />
+          <div className='max-w-xl'>
+            <SQLEditor
+              chartBuilderEnabled
+              containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
+            />
+          </div>
         )
       case 'shadcn':
         return (

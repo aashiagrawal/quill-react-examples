@@ -30,11 +30,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { StyleContext } from '@/context/StyleContext'
 
-type ReportBuilderProps = {
-  uiname: string
-}
-
-export default function ReportBuilderExample ({uiname}:ReportBuilderProps) {
+export default function ReportBuilderExample () {
 
     const { style, setStyle } = useContext(StyleContext);
     const onChangeQuery = (query: string) => {

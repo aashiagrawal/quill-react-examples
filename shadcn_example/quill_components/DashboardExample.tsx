@@ -16,17 +16,9 @@ import { StyleContext } from '@/context/StyleContext'
 import { CardComponent } from '@/shadcn_components/CardComponent'
 import { CardHeader, CardContent, Card } from '@mui/material'
 
-type DashboardProps = {
-  uiname:string
-}
+export default function DashExample() {
+  const { style, setStyle} = useContext(StyleContext);
 
-export default function DashExample({uiname}:DashboardProps) {
-  const { style, setStyle } = useContext(StyleContext);
-
-  // useEffect(() => {
-  //   console.log("style in line 26 is: ", style)
-
-  // }, [style]);
 
   const dateProp: DateRange = [new Date(2022, 0, 20), addDays(new Date(2022, 0, 20), 20)];
   const [selection, setSelection] = useState("")
