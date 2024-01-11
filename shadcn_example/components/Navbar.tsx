@@ -6,8 +6,8 @@ import { Toggle } from './ui/toggle';
 
 const initialNavigation = [
   { name: 'Dashboard', current: true, href:'/' },
-  { name: 'Report Builder', baseHref: '/reportBuilder', current: false, href:'/reportBuilder' },
-  { name: 'SQL Editor', baseHref: '/sqlEditor', current: false, href:'/sqlEditor' },
+  { name: 'Report Builder', current: false, href:'/reportBuilder' },
+  { name: 'SQL Editor', current: false, href:'/sqlEditor' },
 ];
 
 function classNames(...classes) {
@@ -21,12 +21,7 @@ const Navbar = () => {
   const [activeItem, setActiveItem] = useState('Dashboard');
   const [selectedOption, setSelectedOption] = useState('default');
 
-  // const [showCode, setShowCode] = useState(false);
-
   useEffect(() => {
-    console.log(selectedOption);
-    console.log("currStyle is: ", style)
-
     // Updating global style in StyleContext
     setStyle(selectedOption)
 
@@ -48,7 +43,7 @@ const Navbar = () => {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <Link href="/default">
+                <Link href="/">
                   <h2 className="text-white text-xl">🚛 Fleetcard</h2>
                 </Link>
               </div>
