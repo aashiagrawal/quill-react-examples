@@ -6,7 +6,7 @@ import ShadcnDatePickerAdapter from '@/adapters/ShadcnDatePickerAdapter'
 import { SelectScrollable } from '@/shadcn_components/SelectScrollable'
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+// import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
@@ -16,6 +16,10 @@ import { StyleContext } from '@/context/StyleContext'
 import { CardComponent } from '@/shadcn_components/CardComponent'
 import { CardHeader, CardContent, Card, Typography } from '@mui/material'
 import { LabelDemo } from '@/shadcn_components/Label'
+import * as SelectR from '@radix-ui/react-select'
+import { Button, SelectContent, SelectItem, SelectTrigger } from '@radix-ui/themes'
+import { Select } from '@radix-ui/react-select'
+import { NativeSelect } from '@mantine/core';
 
 export default function DashExample() {
   const { style, setStyle} = useContext(StyleContext);
@@ -192,6 +196,46 @@ export default function DashExample() {
                 </Card>
               );
             }}
+            />
+          )
+        case "mantine":
+          return (
+            <Dashboard
+              name="transactions"
+              containerStyle={{
+                paddingLeft: 25,
+                paddingRight: 25,
+                paddingTop: 30,
+                width: "100%",
+              }}
+              DateRangePickerComponent={({ 
+                dateRange = dateProp as DateRange,
+                label = {}, 
+                onChangeDateRange = (value: DateRange) => {}, 
+                selectedPreset = "", 
+                presetOptions = [],
+                onChangePreset = (preset: DateRangePickerOption) => {}, 
+                preset = "", 
+                theme = {} 
+              }) => (
+                <div>
+                  <div style={{"marginBottom": 9, "marginTop": 24}}>
+                    <LabelDemo children={label}/>
+                  </div>
+                  <div className="flex">
+                    <div style={{"marginRight": 10}}>
+                      <ShadcnDatePickerAdapter 
+                        dateRange={dateRange}
+                        label={label}
+                        onChangeDateRange={onChangeDateRange}
+                      />
+                    </div>
+                    <div>
+                      {/* <NativeSelect label="Input label" description="Input description" data={['React', 'Angular', 'Vue']} /> */}
+                    </div>
+                  </div>
+                </div>
+              )}
             />
           )
     }
