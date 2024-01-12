@@ -10,12 +10,16 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { StyleContext } from '@/context/StyleContext'
 import { CardComponent } from '@/shadcn_components/CardComponent'
 import { CardHeader, CardContent, Card, Typography } from '@mui/material'
 import { LabelDemo } from '@/shadcn_components/Label'
+import { NativeSelect } from '@mantine/core';
+import { Textarea } from '@mantine/core';
+import { DatePickerInput } from '@mantine/dates'
+import { MantineCard } from '@/mantine_components/MantineCard'
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 
 export default function DashExample() {
   const { style, setStyle} = useContext(StyleContext);
@@ -30,6 +34,7 @@ export default function DashExample() {
   const renderDashboard = () => {
     switch(style) {
       case 'default':
+        console.log("in default")
         return (
             <Dashboard
               name="transactions"
@@ -111,8 +116,8 @@ export default function DashExample() {
             }}
             /> 
         )
-        case 'material-ui':
-          return (
+      case 'material-ui':
+       return (
             <Dashboard
             name="transactions"
             containerStyle={{
@@ -192,6 +197,57 @@ export default function DashExample() {
                 </Card>
               );
             }}
+            />
+          )
+      case 'mantine':
+          console.log("here");
+          return (
+            <Dashboard
+              name="transactions"
+              containerStyle={{
+                paddingLeft: 25,
+                paddingRight: 25,
+                paddingTop: 30,
+                width: "100%",
+              }}
+              DateRangePickerComponent={({ 
+                dateRange = dateProp as DateRange,
+                label = {}, 
+                onChangeDateRange = (value: DateRange) => {}, 
+                selectedPreset = "", 
+                presetOptions = [],
+                onChangePreset = (preset: DateRangePickerOption) => {}, 
+                preset = "", 
+                theme = {} 
+              }) => (
+                <div>
+                  <div style={{"marginBottom": 9, "marginTop": 24}}>
+                    <LabelDemo children={label}/>
+                  </div>
+                  <div className="flex">
+                    <div style={{"marginRight": 10}}>
+                      <ShadcnDatePickerAdapter 
+                        dateRange={dateRange}
+                        label={label}
+                        onChangeDateRange={onChangeDateRange}
+                      />
+                    </div>
+                    <div>
+                      <NativeSelect data={presetOptions.map(option => option.text)} onChange={onChangePreset}/>
+                    </div>
+                  </div>
+                </div>
+              )}
+              DashboardItemComponent={({
+                dashboardItem, children
+              }) => (
+                <div>
+                  <MantineCard
+                    children={children}
+                    dashboardName={dashboardItem.name}
+                  />
+                </div>
+              )}
             />
           )
     }

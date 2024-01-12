@@ -6,6 +6,9 @@ import './globals.css'
 import { QuillProvider, Dashboard } from "@quillsql/react";
 import Navbar from '@/components/Navbar';
 import { StyleProvider } from '@/context/StyleContext';
+import { createTheme, MantineProvider } from '@mantine/core';
+import { Style2Context, Style2Provider } from '@/context/Style2Context'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,8 +27,12 @@ export default function RootLayout({
         <body className={inter.className}>
           <QuillProvider organizationId='2' publicKey='6579031b3e41c378aa8180ec'>
           <StyleProvider>
-              <Navbar></Navbar>
-              {children}
+            {/* <Style2Provider> */}
+                <MantineProvider>
+                  <Navbar></Navbar>
+                  {children}
+                </MantineProvider>
+              {/* </Style2Provider> */}
             </StyleProvider>
           </QuillProvider>
         </body>

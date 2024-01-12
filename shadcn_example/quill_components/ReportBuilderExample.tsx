@@ -34,6 +34,13 @@ import { CardComponent } from '@/shadcn_components/CardComponent'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { CardActionArea } from '@mui/material'
+import MantineButton from '@/mantine_components/MantineButton'
+import MantineTable from '@/mantine_components/MantineTable'
+import MantineTextInput from '@/mantine_components/MantineTextInput'
+import { NativeSelect, Title } from '@mantine/core'
+import MantineModal from '@/mantine_components/MantineModal'
+import { MantineCard } from '@/mantine_components/MantineCard'
+import MantinePopover from '@/mantine_components/MantinePopover'
 
 export default function ReportBuilderExample () {
 
@@ -434,6 +441,112 @@ export default function ReportBuilderExample () {
 
         />
           )
+        case 'mantine':
+          return (
+            <ReportBuilder
+              onChangeQuery={onChangeQuery}
+              containerStyle={{ padding: 20 }}
+              // @ts-ignore
+              onChangeData= {onChangeDate}
+              onChangeColumns={onChangeDate}
+              onError={(error) => console.log("ERROR: ", error)}
+              tableName="transactions"
+              dateColumn="created_at"
+              chartBuilderEnabled
+              Button={({
+                onClick,
+                label,
+                primary = true
+              }) => (
+                <MantineButton
+                  onClick={onClick}
+                  label={label}
+                  primary={primary}
+                />
+              )}
+              SecondaryButton={({
+                onClick,
+                label,
+                primary = false, 
+              }) => (
+                <MantineButton
+                  onClick={onClick}
+                  label={label}
+                  primary={primary}
+                />
+              )}
+              Table={({
+                columns=[],
+                rows=[],
+                height=""
+                }) => (
+                <div>
+                    <MantineTable
+                    columns={columns}
+                    rows={rows}
+                    // height={height}
+                    />
+                </div>
+                )}
+              TextInput = {({
+                onChange,
+                label,
+                value,
+                placeholder
+              }) => (
+                <MantineTextInput
+                  onChange={onChange}
+                  label={label}
+                  value={value}
+                  placeholder={placeholder}
+                />
+              )}
+              Select = {({
+                options,
+                onChangePreset,
+                value,
+                label
+              }) => (
+                <NativeSelect data={options.map(option => option.label)} onChange={onChangePreset} value={value}/>
+              )}
+              Header = {({children}) => (
+                <Title order={5}>{children}</Title>
+              )}
+              SubHeader = {({children}) => (
+                <Title order={5}>{children}</Title>
+              )}
+              Label = {({children}) => (
+                <Title order={6}>{children}</Title>
+              )}
+              Modal = {({children, setIsOpen, isOpen, title}) => (
+                <MantineModal
+                  children={children}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  title={title}
+                />
+              )}
+              Card = {({children, onClick}) => (
+                <MantineCard
+                  children = {children}
+                  onClick={onClick}
+                />
+              )}
+              Popover={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+                <MantinePopover
+                  label={label}
+                  onClick={onClick}
+                  children={children}
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                  showTrigger={showTrigger}
+                  parentRef={parentRef}
+                  title={title}
+                />
+              )}
+            />
+          )
+        
       }
     }
 

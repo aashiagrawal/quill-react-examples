@@ -110,6 +110,20 @@ const Navbar = () => {
                 Material UI
               </a>
 
+              {/* Option: Mantine */}
+              <a
+                key="mantine"
+                onClick={() => setSelectedOption('mantine')}
+                className={classNames(
+                  selectedOption === 'mantine'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
+                )}
+              >
+                Mantine
+              </a>
+
               <Toggle aria-label="Toggle italic" onClick={() => setShowCode(!showCode)} className={classNames(
                   selectedOption === 'material-ui'
                     ?  'text-white'
