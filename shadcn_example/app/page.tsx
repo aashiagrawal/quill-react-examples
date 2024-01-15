@@ -1,16 +1,18 @@
 'use client'
 import { StyleContext } from '@/context/StyleContext';
-import DashExample from '@/quill_components/DashboardExample'
+import DashExample from '@/components/quill_components/DashboardExample'
 import { useContext, useEffect, useState } from 'react';
 
 import hljs from 'highlight.js/lib/core';
 import typescript from 'highlight.js/lib/languages/typescript';
 hljs.registerLanguage('typescript', typescript);
 import 'highlight.js/styles/default.css';
-import CodeSnippetContainter from '@/components/CodeSnippetContainter';
+import CodeSnippetContainter from '@/components/CodeSnippetContainer';
+import { LibraryNameContext } from './layout';
 
 export default function Home() {
   const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
+  // const { style, setStyle, showCode, setShowCode } = useContext(LibraryNameContext);
 
   return (
     <main>

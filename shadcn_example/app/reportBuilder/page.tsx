@@ -1,11 +1,13 @@
 "use client"
 import React, {useContext} from 'react'
-import ReportBuilderExample from '@/quill_components/ReportBuilderExample'
-import CodeSnippetContainter from '@/components/CodeSnippetContainter'
+import ReportBuilderExample from '@/components/quill_components/ReportBuilderExample'
+import CodeSnippetContainter from '@/components/CodeSnippetContainer'
 import { StyleContext } from '@/context/StyleContext';
+import { LibraryNameContext } from '../layout';
 
 const page = () => {
   const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
+  // const { style, setStyle, showCode, setShowCode } = useContext(LibraryNameContext);
   return (
       <main>
         <div style={{ display: 'flex', flexDirection: 'row', transition: 'flex 0.5s ease' }}>

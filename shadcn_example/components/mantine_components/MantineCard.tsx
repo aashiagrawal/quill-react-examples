@@ -5,6 +5,7 @@ type MantineCardProps = {
     children: any,
     onClick?: any,
 }
+
 export function MantineCard({dashboardName, children, onClick}:MantineCardProps) {
   return (
     // <Card onClick={onClick?onClick: undefined} style={minHeight? minHeight: {minHeight:200}}>

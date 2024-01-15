@@ -1,7 +1,7 @@
 'use client'
 import { DateRange, DateRangePickerOption } from '@quillsql/react/src/DateRangePicker/DateRangePicker'
 import { DateRange as ReactDateRange} from 'react-day-picker'
-import { DatePickerWithRange } from '../shadcn_components/DatePickerWithRange'
+import { DatePickerWithRange } from '../components/shadcn_components/DatePickerWithRange'
 import React, {useState, useEffect} from 'react'
 
 // interface QuillShadcnDateRangePickerComponentProps extends Omit<ShadcnDateRangePickerComponentProps & DateRangePickerProps, "className"> {

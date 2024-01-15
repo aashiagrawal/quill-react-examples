@@ -1,13 +1,13 @@
 'use client'
 import React, {useRef, useState, useEffect, useContext} from 'react'
 import { ReportBuilder } from '@quillsql/react'
-import { SelectScrollable } from '@/shadcn_components/SelectScrollable'
-import { TextInput } from '@/shadcn_components/TextInput'
-import { ButtonDemo } from '@/shadcn_components/Button'
-import { LabelDemo } from '@/shadcn_components/Label'
-import { DialogCloseButton } from '@/shadcn_components/Dialog'
-import { ShadcnPopover } from '@/shadcn_components/Popover'
-import { TableDemo } from '@/shadcn_components/Table'
+import { SelectScrollable } from '@/components/shadcn_components/SelectScrollable'
+import { TextInput } from '@/components/shadcn_components/TextInput'
+import { ButtonDemo } from '@/components/shadcn_components/Button'
+import { LabelDemo } from '@/components/shadcn_components/Label'
+import { DialogCloseButton } from '@/components/shadcn_components/Dialog'
+import { ShadcnPopover } from '@/components/shadcn_components/Popover'
+import { TableDemo } from '@/components/shadcn_components/Table'
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -30,21 +30,30 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { StyleContext } from '@/context/StyleContext'
 import { Anybody } from 'next/font/google'
-import { CardComponent } from '@/shadcn_components/CardComponent'
+import { CardComponent } from '@/components/shadcn_components/CardComponent'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { CardActionArea } from '@mui/material'
-import MantineButton from '@/mantine_components/MantineButton'
-import MantineTable from '@/mantine_components/MantineTable'
-import MantineTextInput from '@/mantine_components/MantineTextInput'
+import { CardActionArea, getListSubheaderUtilityClass } from '@mui/material'
+import MantineButton from '@/components/mantine_components/MantineButton'
+import MantineTable from '@/components/mantine_components/MantineTable'
+import MantineTextInput from '@/components/mantine_components/MantineTextInput'
 import { NativeSelect, Title } from '@mantine/core'
-import MantineModal from '@/mantine_components/MantineModal'
-import { MantineCard } from '@/mantine_components/MantineCard'
-import MantinePopover from '@/mantine_components/MantinePopover'
+import MantineModal from '@/components/mantine_components/MantineModal'
+import { MantineCard } from '@/components/mantine_components/MantineCard'
+import MantinePopover from '@/components/mantine_components/MantinePopover'
+import { LibraryNameContext } from '@/app/layout'
+import AntdButton from '../antd_components/AntdButton'
+import AntdTable from '../antd_components/AntdTable'
+import { AntdSelect } from '../antd_components/AntdSelect'
+import { AntdTextInput } from '../antd_components/AntdTextInput'
+import { AntdHeader } from '../antd_components/AntdHeader'
+import { AntdModal } from '../antd_components/AntdModal'
+import { AntdPopover } from '../antd_components/AntdPopover'
 
 export default function ReportBuilderExample () {
 
     const { style, setStyle } = useContext(StyleContext);
+    // const { style, setStyle} = useContext(LibraryNameContext);
     const onChangeQuery = (query: string) => {
         console.log(query)
     }
@@ -503,11 +512,11 @@ export default function ReportBuilderExample () {
               )}
               Select = {({
                 options,
-                onChangePreset,
+                onChange,
                 value,
                 label
               }) => (
-                <NativeSelect data={options.map(option => option.label)} onChange={onChangePreset} value={value}/>
+                <NativeSelect data={options.map(option => option.label)} onChange={(event) => onChange(event.target.value)} value={value}/>
               )}
               Header = {({children}) => (
                 <Title order={5}>{children}</Title>
@@ -546,7 +555,83 @@ export default function ReportBuilderExample () {
               )}
             />
           )
-        
+        case 'antd':
+          return (
+            <ReportBuilder
+              onChangeQuery={onChangeQuery}
+              containerStyle={{ padding: 20 }}
+              // @ts-ignore
+              onChangeData= {onChangeDate}
+              onChangeColumns={onChangeDate}
+              onError={(error) => console.log("ERROR: ", error)}
+              tableName="transactions"
+              dateColumn="created_at"
+              chartBuilderEnabled
+              Button={({onClick, label, primary = true}) => (
+                <AntdButton 
+                  primary={primary}
+                  onClick={onClick}
+                  label={label}
+                />
+              )}
+              SecondaryButton={({onClick, label, primary = false}) => (
+                <AntdButton 
+                  primary={primary}
+                  onClick={onClick}
+                  label={label}
+                />
+              )}
+              Table={({columns=[], rows=[], height=""}) => (
+                <div>
+                  <AntdTable
+                    columns={columns}
+                    rows = {rows}
+                  />
+                </div>
+                )}
+              TextInput = {({onChange, label, value, placeholder, id}) => (
+                <AntdTextInput
+                  onChange={onChange}
+                  label={label}
+                  value={value}
+                  placeholder={placeholder}
+                  id={id}
+                />
+              )}
+              Select = {({options, onChange, value, label}) => (
+                <AntdSelect options={options.map(option => option.label)} onChange={onChange} value={value}/>
+              )}
+              Header = {({children}) => (
+                <AntdHeader children={children} subheader={false}/>
+              )}
+              SubHeader = {({children}) => (
+                <AntdHeader children={children} subheader={true}/>
+              )}
+              Label = {({children}) => (
+                <AntdHeader children={children} subheader={true}/>
+              )}
+              Modal = {({children, setIsOpen, isOpen, title}) => (
+                <AntdModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title}/>
+              )}
+              Card = {({children, onClick}) => (
+                <MantineCard
+                  children={children}
+                  onClick={onClick}
+                />
+              )}
+              Popover={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+                <AntdPopover
+                  label={label}
+                  onClick={onClick}
+                  children={children}
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                  showTrigger={showTrigger}
+                  parentRef={parentRef}
+                />
+              )}
+            />
+          )
       }
     }
 

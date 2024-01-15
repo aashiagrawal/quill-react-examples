@@ -3,7 +3,7 @@ import { Dashboard } from '@quillsql/react'
 import { DateRange, DateRangePickerOption } from '@quillsql/react/src/DateRangePicker/DateRangePicker'
 import { addDays} from "date-fns"
 import ShadcnDatePickerAdapter from '@/adapters/ShadcnDatePickerAdapter'
-import { SelectScrollable } from '@/shadcn_components/SelectScrollable'
+import { SelectScrollable } from '@/components/shadcn_components/SelectScrollable'
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -12,17 +12,23 @@ import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { StyleContext } from '@/context/StyleContext'
-import { CardComponent } from '@/shadcn_components/CardComponent'
+import { CardComponent } from '@/components/shadcn_components/CardComponent'
 import { CardHeader, CardContent, Card, Typography } from '@mui/material'
-import { LabelDemo } from '@/shadcn_components/Label'
+import { LabelDemo } from '@/components/shadcn_components/Label'
 import { NativeSelect } from '@mantine/core';
 import { Textarea } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates'
-import { MantineCard } from '@/mantine_components/MantineCard'
+import { MantineCard } from '@/components/mantine_components/MantineCard'
 import { LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { LibraryNameContext } from '@/app/layout'
+import { Library } from 'lucide-react'
+import { AntdDatePicker } from '../antd_components/AntdDatePicker'
+import AntdCard from '../antd_components/AntdCard'
+import { AntdSelect } from '../antd_components/AntdSelect'
 
 export default function DashExample() {
   const { style, setStyle} = useContext(StyleContext);
+  // const { style, setStyle} = useContext(LibraryNameContext);
 
 
   const dateProp: DateRange = [new Date(2022, 0, 20), addDays(new Date(2022, 0, 20), 20)];
@@ -198,7 +204,7 @@ export default function DashExample() {
               );
             }}
             />
-          )
+        )
       case 'mantine':
           console.log("here");
           return (
@@ -249,7 +255,53 @@ export default function DashExample() {
                 </div>
               )}
             />
-          )
+        )
+      case 'antd': 
+        return (
+          <Dashboard
+            name="transactions"
+            containerStyle={{
+              paddingLeft: 25,
+              paddingRight: 25,
+              paddingTop: 50,
+              width: "100%",
+            }}
+            DateRangePickerComponent={({ 
+              dateRange = dateProp as DateRange,
+              label = {}, 
+              onChangeDateRange = (value: DateRange) => {}, 
+              selectedPreset = "", 
+              presetOptions = [],
+              onChangePreset = (preset: DateRangePickerOption) => {}, 
+              preset = "", 
+              theme = {} 
+            }) => (
+              <div>
+                <div style={{"marginBottom": 9, "marginTop": 24}}>
+                  <LabelDemo children={label}/>
+                </div>
+                <div className="flex">
+                  <div style={{"marginRight": 10}}>
+                    <ShadcnDatePickerAdapter 
+                      dateRange={dateRange}
+                      label={label}
+                      onChangeDateRange={onChangeDateRange}
+                    />
+                  </div>
+                  <div>
+                    <AntdSelect options={presetOptions.map(option => option.text)} onChange={onChangePreset}/>
+                  </div>
+                </div>
+              </div>
+            )}
+            DashboardItemComponent={({dashboardItem, children}) => (
+              <AntdCard 
+                dashboardName = {dashboardItem.name}
+                children = {children}
+              />
+            )}
+          />
+        )
     }
   }
 
