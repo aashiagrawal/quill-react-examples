@@ -135,6 +135,18 @@ const Navbar = () => {
               >
                 Ant Design
               </a>
+              <a
+                key="chakra"
+                onClick={() => setSelectedOption('chakra')}
+                className={classNames(
+                  selectedOption === 'chakra'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
+                )}
+              >
+                Chakra
+              </a>
 
               <Toggle aria-label="Toggle italic" onClick={() => setShowCode(!showCode)} className={classNames(
                   selectedOption === 'material-ui'

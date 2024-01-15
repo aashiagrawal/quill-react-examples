@@ -25,6 +25,8 @@ import { Library } from 'lucide-react'
 import { AntdDatePicker } from '../antd_components/AntdDatePicker'
 import AntdCard from '../antd_components/AntdCard'
 import { AntdSelect } from '../antd_components/AntdSelect'
+import { ChakraSelect } from '../chakra_components/ChakraSelect'
+import { ChakraCard } from '../chakra_components/ChakraCard'
 
 export default function DashExample() {
   const { style, setStyle} = useContext(StyleContext);
@@ -302,6 +304,52 @@ export default function DashExample() {
             )}
           />
         )
+        case 'chakra': 
+          return (
+            <Dashboard
+              name="transactions"
+              containerStyle={{
+                paddingLeft: 25,
+                paddingRight: 25,
+                paddingTop: 50,
+                width: "100%",
+              }}
+              DateRangePickerComponent={({ 
+                dateRange = dateProp as DateRange,
+                label = {}, 
+                onChangeDateRange = (value: DateRange) => {}, 
+                selectedPreset = "", 
+                presetOptions = [],
+                onChangePreset = (preset: DateRangePickerOption) => {}, 
+                preset = "", 
+                theme = {} 
+              }) => (
+                <div>
+                  <div style={{"marginBottom": 9, "marginTop": 24}}>
+                    <LabelDemo children={label}/>
+                  </div>
+                  <div className="flex">
+                    <div style={{"marginRight": 10}}>
+                      <ShadcnDatePickerAdapter 
+                        dateRange={dateRange}
+                        label={label}
+                        onChangeDateRange={onChangeDateRange}
+                      />
+                    </div>
+                    <div>
+                      <ChakraSelect options={presetOptions.map(option => option.text)} onChange={onChangePreset}/>
+                    </div>
+                  </div>
+                </div>
+              )}
+              DashboardItemComponent={({dashboardItem, children}) => (
+                <ChakraCard 
+                  dashboardName = {dashboardItem.name}
+                  children = {children}
+                />
+              )}
+            />
+          )
     }
   }
 

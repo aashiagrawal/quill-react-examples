@@ -36,7 +36,10 @@ import { AntdTextInput } from '../antd_components/AntdTextInput'
 import { genPlaceholderStyle } from 'antd/es/input/style'
 import { Spin } from 'antd'
 import AntdTable from '../antd_components/AntdTable'
-
+import { ChakraButton } from '../chakra_components/ChakraButton'
+import ChakraTextInput from '../chakra_components/ChakraTextInput'
+import { Spinner } from '@chakra-ui/react'
+import ChakraTable from '../chakra_components/ChakraTable'
 
 export default function SQLEditorExample () {
   const { style, setStyle } = useContext(StyleContext);
@@ -291,6 +294,37 @@ export default function SQLEditorExample () {
             )}
             TableComponent = {({rows, columns, height}) => (
               <AntdTable
+                rows={rows}
+                columns={columns}
+              />
+            )}
+          />
+      )
+      case 'chakra':
+        return (
+          <SQLEditor
+            chartBuilderEnabled
+            containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
+            ButtonComponent={({onClick, label}) => (
+              <ChakraButton onClick={onClick} label={label} primary={true}/>
+            )}
+            SecondaryButtonComponent={({onClick, label}) => (
+              <ChakraButton onClick={onClick} label={label} primary={false}/>
+            )}
+            TextInputComponent={({onChange, label, value, placeHolder, id}) => (
+              <ChakraTextInput
+                onChange={onChange}
+                label={label}
+                value={value}
+                placeholder={placeHolder}
+                id={id}
+              />
+            )}
+            LoadingComponent={() => (
+              <Spinner/>
+            )}
+            TableComponent = {({rows, columns, height}) => (
+              <ChakraTable
                 rows={rows}
                 columns={columns}
               />

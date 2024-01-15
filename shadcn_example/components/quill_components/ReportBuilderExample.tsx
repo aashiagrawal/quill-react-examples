@@ -49,6 +49,14 @@ import { AntdTextInput } from '../antd_components/AntdTextInput'
 import { AntdHeader } from '../antd_components/AntdHeader'
 import { AntdModal } from '../antd_components/AntdModal'
 import { AntdPopover } from '../antd_components/AntdPopover'
+import ChakraTable from '../chakra_components/ChakraTable'
+import { ChakraButton } from '../chakra_components/ChakraButton'
+import ChakraTextInput from '../chakra_components/ChakraTextInput'
+import { ChakraSelect } from '../chakra_components/ChakraSelect'
+import ChakraHeader from '../chakra_components/ChakraHeader'
+import ChakraModal from '../chakra_components/ChakraModal'
+import { ChakraCard } from '../chakra_components/ChakraCard'
+import ChakraPopover from '../chakra_components/ChakraPopover'
 
 export default function ReportBuilderExample () {
 
@@ -632,6 +640,83 @@ export default function ReportBuilderExample () {
               )}
             />
           )
+          case 'chakra':
+            return (
+              <ReportBuilder
+                onChangeQuery={onChangeQuery}
+                containerStyle={{ padding: 20 }}
+                // @ts-ignore
+                onChangeData= {onChangeDate}
+                onChangeColumns={onChangeDate}
+                onError={(error) => console.log("ERROR: ", error)}
+                tableName="transactions"
+                dateColumn="created_at"
+                chartBuilderEnabled
+                Button={({onClick, label, primary = true}) => (
+                  <ChakraButton 
+                    primary={primary}
+                    onClick={onClick}
+                    label={label}
+                  />
+                )}
+                SecondaryButton={({onClick, label, primary = false}) => (
+                  <ChakraButton 
+                    primary={primary}
+                    onClick={onClick}
+                    label={label}
+                  />
+                )}
+                Table={({columns=[], rows=[], height=""}) => (
+                  <div>
+                    <ChakraTable
+                      columns={columns}
+                      rows = {rows}
+                    />
+                  </div>
+                  )}
+                TextInput = {({onChange, label, value, placeholder, id}) => (
+                  <ChakraTextInput
+                    onChange={onChange}
+                    label={label}
+                    value={value}
+                    placeholder={placeholder}
+                    id={id}
+                  />
+                )}
+                Select = {({options, onChange, value, label}) => (
+                  <ChakraSelect options={options.map(option => option.label)} onChange={onChange} value={value}/>
+                )}
+                Header = {({children}) => (
+                  <ChakraHeader children={children} subheader={false}/>
+                )}
+                SubHeader = {({children}) => (
+                  <AntdHeader children={children} subheader={true}/>
+                )}
+                Label = {({children}) => (
+                  <AntdHeader children={children} subheader={true}/>
+                )}
+                Modal = {({children, setIsOpen, isOpen, title}) => (
+                  <ChakraModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title}/>
+                )}
+                Card = {({children, onClick}) => (
+                  <ChakraCard
+                    children={children}
+                    onClick={onClick}
+                  />
+                )}
+                Popover={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+                  <ChakraPopover
+                    label={label}
+                    onClick={onClick}
+                    children={children}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    showTrigger={showTrigger}
+                    parentRef={parentRef}
+                  />
+                )}
+              />
+            )
       }
     }
 

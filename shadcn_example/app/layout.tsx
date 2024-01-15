@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar';
 import { StyleProvider } from '@/context/StyleContext';
 import { createTheme, MantineProvider } from '@mantine/core';
 import { Style2Context, Style2Provider } from '@/context/Style2Context'
-
+import { ChakraProvider } from '@chakra-ui/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -53,8 +53,10 @@ export default function RootLayout({
           <QuillProvider organizationId='2' publicKey='6579031b3e41c378aa8180ec'>
           <StyleProvider>
                 <MantineProvider>
-                  <Navbar></Navbar>
-                  {children}
+                  <ChakraProvider>
+                    <Navbar></Navbar>
+                    {children}
+                  </ChakraProvider>
                 </MantineProvider>
             </StyleProvider>
           </QuillProvider>
