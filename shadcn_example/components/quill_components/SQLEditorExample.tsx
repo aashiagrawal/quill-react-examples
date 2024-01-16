@@ -62,22 +62,22 @@ export default function SQLEditorExample () {
           <SQLEditor
             chartBuilderEnabled
             containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-            ButtonComponent={({
-                onClick= () => console.log("clicked"),
-                label="",
-                primary=true
-            }) => (           
-                <div>
-                <ButtonDemo
-                onClick={onClick}
-                label={label}
-                primary={primary}
-                isDeleteButton={false}/>
-                </div>
-          )}
+          //   ButtonComponent={({
+          //       onClick= () => console.log("clicked"),
+          //       label,
+          //       primary=true
+          //   }) => (           
+          //       <div>
+          //       <ButtonDemo
+          //       onClick={onClick}
+          //       label={label}
+          //       primary={primary}
+          //       isDeleteButton={false}/>
+          //       </div>
+          // )}
             SecondaryButtonComponent={({
                 onClick= () => console.log("clicked"),
-                label="",
+                label,
                 primary=true
             }) => (           
                 <div>
@@ -124,11 +124,11 @@ export default function SQLEditorExample () {
           <SQLEditor
             chartBuilderEnabled
             containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-            ButtonComponent={({ onClick, label }) => (
-              <Button onClick={onClick} variant="contained">
-                {label}
-              </Button>
-            )}
+            // ButtonComponent={({ onClick, label }) => (
+            //   <Button onClick={onClick} variant="contained">
+            //     {label}
+            //   </Button>
+            // )}
             SecondaryButtonComponent={({ onClick, label }) => (
               <Button variant="outlined" onClick={onClick}>
                 {label}
@@ -228,16 +228,16 @@ export default function SQLEditorExample () {
           <SQLEditor
             chartBuilderEnabled
             containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-            ButtonComponent={({
-              onClick,
-              label 
-            }) => (
-              <MantineButton
-                onClick={onClick}
-                label={label}
-                primary={true}
-              />
-            )}
+            // ButtonComponent={({
+            //   onClick,
+            //   label 
+            // }) => (
+            //   <MantineButton
+            //     onClick={onClick}
+            //     label={label}
+            //     primary={true}
+            //   />
+            // )}
             SecondaryButtonComponent={({onClick, label }) => (
               <MantineButton
                 onClick={onClick}
@@ -275,9 +275,9 @@ export default function SQLEditorExample () {
           <SQLEditor
             chartBuilderEnabled
             containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-            ButtonComponent={({onClick, label}) => (
-              <AntdButton onClick={onClick} label={label} primary={true}/>
-            )}
+            // ButtonComponent={({onClick, label}) => (
+            //   <AntdButton onClick={onClick} label={label} primary={true}/>
+            // )}
             SecondaryButtonComponent={({onClick, label}) => (
               <AntdButton onClick={onClick} label={label} primary={false}/>
             )}
@@ -306,9 +306,9 @@ export default function SQLEditorExample () {
           <SQLEditor
             chartBuilderEnabled
             containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-            ButtonComponent={({onClick, label}) => (
-              <ChakraButton onClick={onClick} label={label} primary={true}/>
-            )}
+            // ButtonComponent={({onClick, label}) => (
+            //   <ChakraButton onClick={onClick} label={label} primary={true}/>
+            // )}
             SecondaryButtonComponent={({onClick, label}) => (
               <ChakraButton onClick={onClick} label={label} primary={false}/>
             )}
@@ -337,9 +337,9 @@ export default function SQLEditorExample () {
           <SQLEditor
             chartBuilderEnabled
             containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-            ButtonComponent={({onClick, label}) => (
-              <TailwindButton onClick={onClick} label={label} primary={true}/>
-            )}
+            // ButtonComponent={({onClick, label}) => (
+            //   <TailwindButton onClick={onClick} label={label} primary={true}/>
+            // )}
             SecondaryButtonComponent={({onClick, label}) => (
               <TailwindButton onClick={onClick} label={label} primary={false}/>
             )}

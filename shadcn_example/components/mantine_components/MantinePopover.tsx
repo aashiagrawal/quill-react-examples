@@ -13,7 +13,7 @@ type MantinePopoverProps = {
 
 export default function MantinePopover({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}: MantinePopoverProps) {
   return (
-    <Popover width = {400} withArrow shadow="md" opened={isOpen} onClose={()=> {setIsOpen(false)}}>
+    <Popover width = {640} withArrow shadow="md" opened={isOpen} onClose={()=> {setIsOpen(false)}} position='bottom-end'>
       <Popover.Target>
         {
             showTrigger && (
