@@ -6,8 +6,8 @@ import { StyleContext } from '@/context/StyleContext';
 import { LibraryNameContext } from '../layout';
 
 const page = () => {
-  const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
-  // const { style, setStyle, showCode, setShowCode } = useContext(LibraryNameContext);
+  // const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
+  const [ style, setStyle, showCode, setShowCode ] = useContext(LibraryNameContext);
   return (
       <main>
         <div style={{ display: 'flex', flexDirection: 'row', transition: 'flex 0.5s ease' }}>

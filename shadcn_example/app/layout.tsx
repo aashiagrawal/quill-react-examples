@@ -29,9 +29,9 @@ function ContextProvider({ children }: { children: React.ReactNode }) {
 function LibraryProvider({children}) {
    const [style] = useContext(LibraryNameContext)
 
-  //  if (libraryName === "radix") {
-  //     return <RadixProvider>{children}</RadixProvider>
-  //  }
+   if (style === "chakra") {
+      return <ChakraProvider>{children}</ChakraProvider>
+   }
    
    if (style === "mantine") {
       return <MantineProvider>{children}</MantineProvider>
@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={inter.className}>
-          <QuillProvider organizationId='2' publicKey='6579031b3e41c378aa8180ec'>
+          {/* <QuillProvider organizationId='2' publicKey='6579031b3e41c378aa8180ec'>
           <StyleProvider>
                 <MantineProvider>
                   <ChakraProvider>
@@ -59,15 +59,15 @@ export default function RootLayout({
                   </ChakraProvider>
                 </MantineProvider>
             </StyleProvider>
-          </QuillProvider>
-          {/* <ContextProvider>
+          </QuillProvider> */}
+          <ContextProvider>
             <LibraryProvider>
                 <QuillProvider organizationId='2' publicKey='6579031b3e41c378aa8180ec'>
                   <Navbar/>
                   {children}
                 </QuillProvider>
             </LibraryProvider>
-          </ContextProvider> */}
+          </ContextProvider>
         </body>
       </html>
   )

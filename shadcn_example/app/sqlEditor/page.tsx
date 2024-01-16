@@ -7,8 +7,8 @@ import ReportBuilderExample from '@/components/quill_components/ReportBuilderExa
 import { LibraryNameContext } from '../layout';
 
 const page = () => {
-  const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
-  // const { style, setStyle, showCode, setShowCode } = useContext(LibraryNameContext);
+  // const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
+  const [ style, setStyle, showCode, setShowCode ] = useContext(LibraryNameContext);
 
   return (
     <main style={{ width: '75%' }}>

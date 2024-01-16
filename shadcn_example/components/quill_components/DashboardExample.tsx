@@ -31,8 +31,8 @@ import TailwindCard from '../tailwind_components/TailwindCard'
 import TailwindSelect from '../tailwind_components/TailwindSelect'
 
 export default function DashExample() {
-  const { style, setStyle} = useContext(StyleContext);
-  // const { style, setStyle} = useContext(LibraryNameContext);
+  // const { style, setStyle} = useContext(StyleContext);
+  const [ style, setStyle] = useContext(LibraryNameContext);
 
 
   const dateProp: DateRange = [new Date(2022, 0, 20), addDays(new Date(2022, 0, 20), 20)];

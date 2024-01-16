@@ -67,8 +67,8 @@ import TailwindPopover from '../tailwind_components/TailwindPopover'
 
 export default function ReportBuilderExample () {
 
-    const { style, setStyle } = useContext(StyleContext);
-    // const { style, setStyle} = useContext(LibraryNameContext);
+    // const { style, setStyle } = useContext(StyleContext);
+    const [style, setStyle] = useContext(LibraryNameContext);
     const onChangeQuery = (query: string) => {
         console.log(query)
     }

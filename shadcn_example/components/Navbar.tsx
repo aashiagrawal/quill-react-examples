@@ -3,6 +3,7 @@ import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
 import { StyleContext } from '@/context/StyleContext'
 import { Toggle } from './ui/toggle';
+import { LibraryNameContext } from '@/app/layout';
 
 const initialNavigation = [
   { name: 'Dashboard', current: true, href:'/' },
@@ -15,11 +16,12 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
+  // const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
+  const [ style, setStyle, showCode, setShowCode ] = useContext(LibraryNameContext);
 
   const [navigation, setNavigation] = useState(initialNavigation);
   const [activeItem, setActiveItem] = useState('Dashboard');
-  const [selectedOption, setSelectedOption] = useState('default');
+  const [selectedOption, setSelectedOption] = useState(style || "default");
 
   useEffect(() => {
     // Updating global style in StyleContext

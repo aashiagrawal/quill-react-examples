@@ -45,19 +45,17 @@ import TailwindTextInput from '../tailwind_components/TailwindTextInput'
 import TailwindTable from '../tailwind_components/TailwindTable'
 
 export default function SQLEditorExample () {
-  const { style, setStyle } = useContext(StyleContext);
-  // const { style, setStyle } = useContext(LibraryNameContext);
+  // const { style, setStyle } = useContext(StyleContext);
+  const [ style, setStyle ] = useContext(LibraryNameContext);
 
   const renderSqlEditor = () => {
     switch(style) {
       case 'default':
         return (
-          <div className='max-w-xl'>
-            <SQLEditor
-              chartBuilderEnabled
-              containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
-            />
-          </div>
+          <SQLEditor
+            chartBuilderEnabled
+            containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
+          />
         )
       case 'shadcn':
         return (

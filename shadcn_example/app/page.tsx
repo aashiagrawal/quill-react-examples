@@ -11,8 +11,8 @@ import CodeSnippetContainter from '@/components/CodeSnippetContainer';
 import { LibraryNameContext } from './layout';
 
 export default function Home() {
-  const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
-  // const { style, setStyle, showCode, setShowCode } = useContext(LibraryNameContext);
+  // const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
+  const [ style, setStyle, showCode, setShowCode ] = useContext(LibraryNameContext);
 
   return (
     <main>
