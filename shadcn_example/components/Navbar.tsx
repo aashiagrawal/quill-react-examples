@@ -133,7 +133,7 @@ const Navbar = () => {
                   'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
                 )}
               >
-                Ant Design
+                Antd
               </a>
               <a
                 key="chakra"
@@ -146,6 +146,18 @@ const Navbar = () => {
                 )}
               >
                 Chakra
+              </a>
+              <a
+                key="tailwind"
+                onClick={() => setSelectedOption('tailwind')}
+                className={classNames(
+                  selectedOption === 'tailwind'
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'rounded-md px-3 py-2 text-sm font-medium cursor-pointer'
+                )}
+              >
+                Tailwind
               </a>
 
               <Toggle aria-label="Toggle italic" onClick={() => setShowCode(!showCode)} className={classNames(

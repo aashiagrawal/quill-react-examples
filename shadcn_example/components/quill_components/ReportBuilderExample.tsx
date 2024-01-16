@@ -57,6 +57,13 @@ import ChakraHeader from '../chakra_components/ChakraHeader'
 import ChakraModal from '../chakra_components/ChakraModal'
 import { ChakraCard } from '../chakra_components/ChakraCard'
 import ChakraPopover from '../chakra_components/ChakraPopover'
+import TailwindButton from '../tailwind_components/TailwindButton'
+import TailwindTable from '../tailwind_components/TailwindTable'
+import TailwindTextInput from '../tailwind_components/TailwindTextInput'
+import TailwindModal from '../tailwind_components/TailwindModal'
+import TailwindSelect from '../tailwind_components/TailwindSelect'
+import TailwindCard from '../tailwind_components/TailwindCard'
+import TailwindPopover from '../tailwind_components/TailwindPopover'
 
 export default function ReportBuilderExample () {
 
@@ -690,10 +697,10 @@ export default function ReportBuilderExample () {
                   <ChakraHeader children={children} subheader={false}/>
                 )}
                 SubHeader = {({children}) => (
-                  <AntdHeader children={children} subheader={true}/>
+                  <ChakraHeader children={children} subheader={true}/>
                 )}
                 Label = {({children}) => (
-                  <AntdHeader children={children} subheader={true}/>
+                  <ChakraHeader children={children} subheader={true}/>
                 )}
                 Modal = {({children, setIsOpen, isOpen, title}) => (
                   <ChakraModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title}/>
@@ -706,6 +713,83 @@ export default function ReportBuilderExample () {
                 )}
                 Popover={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
                   <ChakraPopover
+                    label={label}
+                    onClick={onClick}
+                    children={children}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    showTrigger={showTrigger}
+                    parentRef={parentRef}
+                  />
+                )}
+              />
+            )
+          case 'tailwind':
+            return (
+              <ReportBuilder
+                onChangeQuery={onChangeQuery}
+                containerStyle={{ padding: 20 }}
+                // @ts-ignore
+                onChangeData= {onChangeDate}
+                onChangeColumns={onChangeDate}
+                onError={(error) => console.log("ERROR: ", error)}
+                tableName="transactions"
+                dateColumn="created_at"
+                chartBuilderEnabled
+                Button={({onClick, label, primary = true}) => (
+                  <TailwindButton 
+                    primary={primary}
+                    onClick={onClick}
+                    label={label}
+                  />
+                )}
+                SecondaryButton={({onClick, label, primary = false}) => (
+                  <TailwindButton 
+                    primary={primary}
+                    onClick={onClick}
+                    label={label}
+                  />
+                )}
+                Table={({columns=[], rows=[], height=""}) => (
+                  <div>
+                    <TailwindTable
+                      columns={columns}
+                      rows = {rows}
+                    />
+                  </div>
+                  )}
+                TextInput = {({onChange, label, value, placeholder, id}) => (
+                  <TailwindTextInput
+                    onChange={onChange}
+                    label={label}
+                    value={value}
+                    placeholder={placeholder}
+                    id={id}
+                  />
+                )}
+                Select = {({options, onChange, value, label}) => (
+                  <TailwindSelect options={options.map(option => option.label)} onChange={onChange} value={value}/>
+                )}
+                Header = {({children}) => (
+                  <h3 className="text-base font-semibold leading-6 text-gray-900">{children}</h3>
+                )}
+                SubHeader = {({children}) => (
+                  <h3 className="text-sm font-semibold leading-6 text-gray-900">{children}</h3>
+                )}
+                Label = {({children}) => (
+                  <h3 className="text-base font-semibold leading-6 text-gray-900">{children}</h3>
+                )}
+                Modal = {({children, setIsOpen, isOpen, title, onClose}) => (
+                  <TailwindModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title} onClose={onClose}/>
+                )}
+                Card = {({children, onClick}) => (
+                  <TailwindCard
+                    children={children}
+                    onClick={onClick}
+                  />
+                )}
+                Popover={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+                  <TailwindPopover
                     label={label}
                     onClick={onClick}
                     children={children}

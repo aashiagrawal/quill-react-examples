@@ -40,6 +40,9 @@ import { ChakraButton } from '../chakra_components/ChakraButton'
 import ChakraTextInput from '../chakra_components/ChakraTextInput'
 import { Spinner } from '@chakra-ui/react'
 import ChakraTable from '../chakra_components/ChakraTable'
+import TailwindButton from '../tailwind_components/TailwindButton'
+import TailwindTextInput from '../tailwind_components/TailwindTextInput'
+import TailwindTable from '../tailwind_components/TailwindTable'
 
 export default function SQLEditorExample () {
   const { style, setStyle } = useContext(StyleContext);
@@ -325,6 +328,37 @@ export default function SQLEditorExample () {
             )}
             TableComponent = {({rows, columns, height}) => (
               <ChakraTable
+                rows={rows}
+                columns={columns}
+              />
+            )}
+          />
+      )
+      case 'tailwind':
+        return (
+          <SQLEditor
+            chartBuilderEnabled
+            containerStyle={{ height: "calc(100vh - 140px)", width: "100%" }}
+            ButtonComponent={({onClick, label}) => (
+              <TailwindButton onClick={onClick} label={label} primary={true}/>
+            )}
+            SecondaryButtonComponent={({onClick, label}) => (
+              <TailwindButton onClick={onClick} label={label} primary={false}/>
+            )}
+            TextInputComponent={({onChange, label, value, placeHolder, id}) => (
+              <TailwindTextInput
+                onChange={onChange}
+                label={label}
+                value={value}
+                placeholder={placeHolder}
+                id={id}
+              />
+            )}
+            LoadingComponent={() => (
+              <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+            )}
+            TableComponent = {({rows, columns, height}) => (
+              <TailwindTable
                 rows={rows}
                 columns={columns}
               />
