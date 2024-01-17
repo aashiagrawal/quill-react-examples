@@ -13,12 +13,12 @@ type MantinePopoverProps = {
 
 export default function MantinePopover({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}: MantinePopoverProps) {
   return (
-    <Popover width = {640} withArrow shadow="md" opened={isOpen} onClose={()=> {setIsOpen(false)}} position='bottom-end'>
+    <Popover width={640} withArrow shadow="md" opened={isOpen} onClose={()=> {setIsOpen(false)}} position='bottom-end'>
       <Popover.Target>
         {
-            showTrigger && (
-                <Button variant="default" color="gray" onClick={(event) => setIsOpen(true) }>{label}</Button>
-            )
+          showTrigger 
+            ? <Button variant="default" color="gray" onClick={(event) => setIsOpen(true) }>{label}</Button>
+            : <span style={{ display: 'none' }}></span> // Render an invisible element when showTrigger is false
         }
       </Popover.Target>
       <Popover.Dropdown>

@@ -60,7 +60,7 @@ export function ChakraTable({ rows, columns: originalColumns }) {
 
   return (
     <>
-      <TableContainer overflowY={scroll}>
+      <TableContainer overflowY={scroll} overflowX={scroll}>
         <Table variant='simple' {...getTableProps()}>
           <Thead>
             {headerGroups.map((headerGroup) => (
