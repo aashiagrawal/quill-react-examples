@@ -1,4 +1,3 @@
-
 "use client"
 
 import {
@@ -18,7 +17,7 @@ import {
   TableRow
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import React from "react"
+import React, { useEffect } from "react"
 
 interface DataTableProps<TData, TValue> {
   og_columns: ColumnDef<TData, TValue>[]
@@ -31,12 +30,12 @@ export function ShadcnTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   
   const columns = React.useMemo(() => 
-  og_columns.map(col => ({
-    id: col.field,  // Use the field as the unique id for each column
-    Header: col.label, 
-    accessor: col.field
-  })),
-  [og_columns]
+    og_columns.map(col => ({
+      id: col.field,  // Use the field as the unique id for each column
+      Header: col.label, 
+      accessor: col.field
+    })),
+    [og_columns]
   );
   
   const table = useReactTable({
@@ -44,8 +43,8 @@ export function ShadcnTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-  })
-  
+  });
+
   return (
     <div>
       <div className="rounded-md border">
