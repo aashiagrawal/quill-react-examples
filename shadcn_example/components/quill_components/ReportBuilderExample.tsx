@@ -7,7 +7,7 @@ import { ButtonDemo } from '@/components/shadcn_components/Button'
 import { LabelDemo } from '@/components/shadcn_components/Label'
 import { DialogCloseButton } from '@/components/shadcn_components/Dialog'
 import { ShadcnPopover } from '@/components/shadcn_components/Popover'
-import { TableDemo } from '@/components/shadcn_components/Table'
+import { ShadcnTable } from '@/components/shadcn_components/Table'
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -107,10 +107,10 @@ export default function ReportBuilderExample () {
             height=""
             }) => (
             <div>
-                <TableDemo
-                columns={columns}
-                rows={rows}
-                height={height}
+                <ShadcnTable
+                og_columns={columns}
+                data={rows}
+                // height={height}
                 />
             </div>
             )}
