@@ -28,15 +28,17 @@ export function SelectScrollable({
   console.log("label: ", label)
   console.log("options: ", options)
 
+  const validOptions = options.filter(option => option.value !== '');
+
   return (
     <div>
       <Select onValueChange={onChange}>
-        <SelectTrigger className="w-[380px]">
+        <SelectTrigger className="w-[280px]">
           <SelectValue placeholder={label} />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            {options.map(option => (
+            {validOptions.map(option => (
               <SelectItem key={option.value} value={option.value}>
                 {option.text || option.label}
               </SelectItem>

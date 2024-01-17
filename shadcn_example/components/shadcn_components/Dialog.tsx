@@ -35,23 +35,25 @@ export function DialogCloseButton({
     setIsOpen(open);
   };
 
+  console.log("entered modal");
+
   return (
-    <Dialog open={isOpen} onOpenChange={onOpenChangeHandler} >
-      <DialogTrigger asChild>
+    <Dialog open={isOpen} onOpenChange={onOpenChangeHandler}>
+      {/* <DialogTrigger asChild>
         <Button variant="outline">Open Dialog</Button>
-      </DialogTrigger>
-      <DialogContent className="h-4/5 overflow-y-auto w-full" >
+      </DialogTrigger> */}
+      <DialogContent className="h-4/5 overflow-y-auto w-full" style={{"minWidth": 900}}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
         {children}
-        <DialogFooter className="sm:justify-start">
+        {/* <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
             <Button type="button" variant="secondary" onClick={() => onOpenChangeHandler(false)}>
               Close
             </Button>
           </DialogClose>
-        </DialogFooter>
+        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );

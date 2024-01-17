@@ -117,10 +117,10 @@ export default function ReportBuilderExample () {
             tableName="transactions"
             dateColumn="created_at"
             Select={({
-                label="Filters",
-                onChange = (value: string) => console.log("filter value changed to: ", value),
-                value = "defaultValue",
-                options= []
+                label,
+                onChange,
+                value,
+                options
             }) => (
                 <div>
                 <SelectScrollable
@@ -191,11 +191,11 @@ export default function ReportBuilderExample () {
                 >{children}</LabelDemo>
             )}
             Modal={({
-                children={},
-                isOpen= false,
-                onClose= () => console.log("closed modal"),
-                title="Add Filter",
-                setIsOpen=(open) => isOpen=open
+                children,
+                isOpen,
+                onClose,
+                title,
+                setIsOpen
             }) => (
                 <div >
                     <DialogCloseButton
@@ -214,7 +214,7 @@ export default function ReportBuilderExample () {
                 showTrigger=true,
                 parentRef=useRef(),
                 label="",
-                style={"min-width": 200}
+                style={"min-width": 400}
             }) => (
                 <ShadcnPopover
                     onClose={onClose}
