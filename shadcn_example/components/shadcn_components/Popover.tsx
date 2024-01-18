@@ -41,23 +41,25 @@ export function ShadcnPopover({
   }
   
   return (
-    <Popover open={isOpen} onOpenChange={onOpenChangeHandler}>
-      {
-        showTrigger && (
-          <PopoverTrigger asChild>
-            <Button variant="outline">{label ?? "Open"}</Button>
-          </PopoverTrigger>
-        )
-      }
+    <div style={{ position: 'relative' }}>
+      <Popover open={isOpen} onOpenChange={onOpenChangeHandler}>
+        {
+          showTrigger && (
+            <PopoverTrigger asChild>
+              <Button variant="outline">{label ?? "Open"}</Button>
+            </PopoverTrigger>
+          )
+        }
 
-      {
-        isOpen && (
-          <PopoverContent onClick={onClick} className="w-80" style={style} ref={parentRef}>
-            {children}
-          </PopoverContent>
-        )
-      }
+        {
+          isOpen && (
+            <PopoverContent onClick={onClick} className="w-300 absolute right-0 top-full" style={style} ref={parentRef}>
+              {children}
+            </PopoverContent>
+          )
+        }
 
-    </Popover>
+      </Popover>
+    </div>
   )
 }
