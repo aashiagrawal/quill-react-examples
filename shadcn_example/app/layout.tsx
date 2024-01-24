@@ -62,7 +62,7 @@ export default function RootLayout({
           </QuillProvider> */}
           <ContextProvider>
             <LibraryProvider>
-                <QuillProvider organizationId='2' publicKey='6579031b3e41c378aa8180ec'>
+                <QuillProvider organizationId='2' publicKey='62cda15d7c9fcca7bc0a3689'>
                   <Navbar/>
                   {children}
                 </QuillProvider>
@@ -72,3 +72,5 @@ export default function RootLayout({
       </html>
   )
 }
+
+// 6579031b3e41c378aa8180ec

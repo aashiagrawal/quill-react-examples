@@ -8,57 +8,24 @@ type ShadcnSelectScrollableProps = {
     value: string,
     options: Option[]
   }
-
-export function ChakraSelect({options, onChange, value, label}: ShadcnSelectScrollableProps) {
+  
+export function ChakraSelect({ options, onChange, value, label }: ShadcnSelectScrollableProps) {
     const validOptions = options.filter(option => option.value !== '');
+  
+    // Update to handle the synthetic event and extract the value
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      onChange(event.target.value);
+    };
+  
     return (
-        <div>
-            <Select placeholder='Select option' onChange={onChange}>
-                {validOptions.map(option => (
-                    <option key={option.value} value={option.value}>
-                        {option.text || option.label}
-                    </option>
-                ))}
-                {/* {options.map((option, index) => (
-                    <option key={index} value={option}>
-                        {option} 
-                    </option>
-                ))} */}
-            </Select>
-        </div>
+      <div>
+        <Select placeholder='Select option' onChange={handleChange} value={value}>
+          {validOptions.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.text || option.label}
+            </option>
+          ))}
+        </Select>
+      </div>
     );
-}
-
-// DateRangePickerComponent={({ 
-//     dateRange = dateProp as DateRange,
-//     label = {}, 
-//     onChangeDateRange = (value: DateRange) => {}, 
-//     selectedPreset = "", 
-//     presetOptions = [],
-//     onChangePreset = (preset: DateRangePickerOption) => {}, 
-//     preset = "", 
-//     theme = {} 
-// }) => (
-//   <div>
-//     <div style={{"marginBottom": 9, "marginTop": 24}}>
-//       <LabelDemo children={label}/>
-//     </div>
-//     <div className="flex">
-//       <div style={{"marginRight": 10}}>
-//         <ShadcnDatePickerAdapter 
-//           dateRange={dateRange}
-//           label={label}
-//           onChangeDateRange={onChangeDateRange}
-//         />
-//       </div>
-//       <div>
-//         <SelectScrollable
-//           label={label}
-//           options={presetOptions}
-//           onChange= {onChangePreset}
-//           value={preset}
-//         />
-//       </div>
-//     </div>
-//   </div>
-// )}
+  }

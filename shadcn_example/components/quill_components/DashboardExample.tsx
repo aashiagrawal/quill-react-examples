@@ -35,6 +35,8 @@ import TailwindDateRangePicker from '../tailwind_components/TailwindDateRangePic
 import { Heading } from '@chakra-ui/react'
 import MantineSelect from '../mantine_components/MantineSelect'
 import ChakraDatePicker from '../chakra_components/ChakraDateRangePicker'
+import MaterialPopover from '../material_components/MaterialPopover'
+import MaterialSelect from '../material_components/MaterialSelect'
 export default function DashExample() {
   // const { style, setStyle} = useContext(StyleContext);
   const [ style, setStyle] = useContext(LibraryNameContext);
@@ -189,19 +191,11 @@ export default function DashExample() {
                         />
                       </div>
                       <div>
-                        <FormControl>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={preset}
-                            style={{ width: 230 }}
-                            onChange={onChangePreset}
-                          >
-                            {presetOptions.map((option) => (
-                              <MenuItem value={option.value}>{option.text}</MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
+                        <MaterialSelect label={label} options={presetOptions}
+                            onChange= {onChangePreset}
+                            value={preset}/>
+                      </div>
+                      <div>
                       </div>
                     </div>
                   </LocalizationProvider>
@@ -376,18 +370,18 @@ export default function DashExample() {
                   </div>
                   <div className="flex">
                     <div style={{"marginRight": 10}}>
-                      <ShadcnDatePickerAdapter 
+                      {/* <ShadcnDatePickerAdapter 
                         dateRange={dateRange}
                         label={label}
                         onChangeDateRange={onChangeDateRange}
-                      />
-                      {/* <ChakraDatePicker dateRange={dateRange} onChangeDateRange={onChangeDateRange}/> */}
+                      /> */}
+                      <ChakraDatePicker dateRange={dateRange} onChangeDateRange={onChangeDateRange}/>
                     </div>
                     <div>
                       <ChakraSelect options={presetOptions} onChange={onChangePreset} value={preset} label={label}/>
                     </div>
                   </div>
-                </div>
+                </div>  
               )}
               DashboardItemComponent={({dashboardItem, children}) => (
                 <ChakraCard 
@@ -448,25 +442,25 @@ export default function DashExample() {
                   </p>
                   <div className="flex">
                     <div style={{"marginRight": 10}}>
-                      <ShadcnDatePickerAdapter 
+                      {/* <ShadcnDatePickerAdapter 
                         dateRange={dateRange}
                         label={label}
                         onChangeDateRange={onChangeDateRange}
-                      />
+                      /> */}
 
-                      {/* <TailwindDateRangePicker
+                      <TailwindDateRangePicker
                         dateRange={dateRange}
                         onChangeDateRange={onChangeDateRange}
-                      /> */}
+                      />
                     </div>
-                    <div>
-                      {/* <TailwindSelect options={presetOptions.map(option => option.text)} onChange={onChangePreset}/> */}
-                      <SelectScrollable
+                    <div className="min-w-100">
+                      <TailwindSelect options={presetOptions} onChange={onChangePreset}/>
+                      {/* <SelectScrollable
                         label={label}
                         options={presetOptions}
                         onChange= {onChangePreset}
                         value={preset}
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>

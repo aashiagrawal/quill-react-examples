@@ -15,23 +15,26 @@ type ShadcnSelectScrollableProps = {
     label: string,
     onChange: (preset: DateRangePickerOption) => void,
     value: string,
-    options: Option[]
+    options: Option[],
+    width?:any
   }
   
 export function SelectScrollable({
   label, 
   options,
   onChange,
-  value
+  value,
+  width
 }: ShadcnSelectScrollableProps) {
 
   const validOptions = options.filter(option => option.value !== '');
+  const selectTriggerStyle = width ? `w-[${width}px] z-100` : "w-[280px]";
 
   return (
     <div>
       <Select onValueChange={onChange}>
-        <SelectTrigger className="w-[280px]">
-          <SelectValue placeholder={label} />
+        <SelectTrigger className={selectTriggerStyle}>
+          <SelectValue placeholder="Last 90 days" />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>

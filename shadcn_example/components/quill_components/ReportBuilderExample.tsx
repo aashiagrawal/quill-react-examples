@@ -37,7 +37,7 @@ import { CardActionArea, getListSubheaderUtilityClass } from '@mui/material'
 import MantineButton from '@/components/mantine_components/MantineButton'
 import MantineTable from '@/components/mantine_components/MantineTable'
 import MantineTextInput from '@/components/mantine_components/MantineTextInput'
-import { NativeSelect, Title } from '@mantine/core'
+import { NativeSelect, Title, defaultOptionsFilter } from '@mantine/core'
 import MantineModal from '@/components/mantine_components/MantineModal'
 import { MantineCard } from '@/components/mantine_components/MantineCard'
 import MantinePopover from '@/components/mantine_components/MantinePopover'
@@ -770,7 +770,7 @@ export default function ReportBuilderExample () {
                   />
                 )}
                 Select = {({options, onChange, value, label}) => (
-                  <TailwindSelect options={options.map(option => option.label)} onChange={onChange} value={value}/>
+                  <TailwindSelect options={options} onChange={onChange} value={value}/>
                 )}
                 Header = {({children}) => (
                   <h3 className="text-base font-semibold leading-6 text-gray-900">{children}</h3>
