@@ -1,4 +1,5 @@
 import { TextInput } from '@mantine/core';
+import { useState } from 'react';
 
 type MantineTextInputProps = {
     onChange: (e:any)=>void,
@@ -8,12 +9,21 @@ type MantineTextInputProps = {
 }
 
 export default function MantineTextInput({onChange, label, value, placeholder}: MantineTextInputProps) {
+  
+  const [currValue, setCurrValue] = useState(value);
+
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setCurrValue(newValue);
+    onChange(newValue); // Pass only the value, not the entire event
+  };
+
   return (
     <TextInput
     //   label={label}
       placeholder={placeholder}
-      onChange={onChange}
-      value={value}
+      onChange={onChangeHandler}
+      value={currValue}
     />
   );
 }

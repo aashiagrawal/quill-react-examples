@@ -807,7 +807,7 @@ export default function ReportBuilderExample () {
     }
 
   return (
-    <div>
+    <div className="z-50">
         {renderReportBuilder()}
     </div>
   )
