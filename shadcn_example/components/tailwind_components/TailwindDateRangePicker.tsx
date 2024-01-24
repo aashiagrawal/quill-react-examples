@@ -60,7 +60,7 @@ export default function TailwindDateRangePicker({dateRange, onChangeDateRange}: 
                 
                 <div
                     data-popover="popover"
-                    className=" mt-3 z-50 absolute w-max whitespace-normal break-words rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
+                    className="mt-3 z-50 absolute w-max whitespace-normal break-words rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
                     >
                     <Calendar
                         initialFocus

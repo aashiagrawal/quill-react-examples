@@ -89,7 +89,7 @@ export function TailwindSelect({ options, onChange, value, label }: SelectCompon
                 {
                 options.map((option, index) => {
                   return (
-                    <Menu.Item key={index} as="div" onClick={() => onChange(option)}>
+                    <Menu.Item key={index} as="div" onClick={() => onChange(option.label?option.label:option)}>
                       {({ active }) => (
                         <a className={`${active ? 'bg-gray-100' : ''} block px-4 py-2 text-sm text-gray-700`} onClick={() => setSelectedLabel(option.text||option.label)}>
                           {option.text || option.label}

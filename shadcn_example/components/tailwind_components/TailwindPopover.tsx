@@ -1,5 +1,5 @@
-import React from 'react'
-import { PopoverComponentProps } from '@quillsql/react/src/components/UiComponents'
+import React, { useState, useEffect, useRef } from 'react';
+import { PopoverComponentProps } from '@quillsql/react/src/components/UiComponents';
 
 export function TailwindPopover({
     showTrigger,     
@@ -13,13 +13,24 @@ export function TailwindPopover({
     label
 }: PopoverComponentProps) {
 
+    const [popoverWidth, setPopoverWidth] = useState('w-96'); // Default width
+    const contentRef = useRef(null); // Ref for measuring content width
+
     // Toggles the popover's open state
     const togglePopover = () => {
         setIsOpen(!isOpen);
         if (onClick) {
             onClick();
         }
-    }
+    };
+
+    useEffect(() => {
+        if (isOpen && contentRef.current) {
+            const width = contentRef.current.offsetWidth;
+            setPopoverWidth(Math.max(width, 300)); // Ensure minimum width of 300 pixels
+        }
+    }, [isOpen, children]);
+
 
     return (
         <div style={style} ref={parentRef}>
@@ -30,15 +41,15 @@ export function TailwindPopover({
             }
 
             {isOpen && (
-                <div role="tooltip" className="absolute right-0 top-full w-96 z-50 inline-block text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                    <div className="px-3 py-2">
+                <div role="tooltip" className={`mt-3 absolute right-0 top-full z-50 inline-block text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800 ${popoverWidth}`}>
+                    <div ref={contentRef} className="px-3 py-2">
                         {children}
                     </div>
                     <div data-popper-arrow></div>
                 </div>
             )}
         </div>
-    )
+    );
 }
 
-export default TailwindPopover
+export default TailwindPopover;
