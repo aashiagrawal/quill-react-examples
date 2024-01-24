@@ -5,7 +5,7 @@ export default function MantineSelect({label, options, onChange, value}: SelectC
   // Transform options to have a 'label' property
   const transformedOptions = options.map(option => ({
     value: option.value,
-    label: option.text // Use 'text' as the label
+    label: option.text || option.label // Use 'text' as the label
   }));
 
   return (

@@ -693,7 +693,7 @@ export default function ReportBuilderExample () {
                   />
                 )}
                 Select = {({options, onChange, value, label}) => (
-                  <ChakraSelect options={options.map(option => option.label)} onChange={onChange} value={value}/>
+                  <ChakraSelect options={options} onChange={onChange} value={value}/>
                 )}
                 Header = {({children}) => (
                   <ChakraHeader children={children} subheader={false}/>

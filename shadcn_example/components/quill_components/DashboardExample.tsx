@@ -242,7 +242,6 @@ export default function DashExample() {
                       />
                     </div>
                     <div>
-                      {/* <div>Preset</div> */}
                       <MantineSelect options={presetOptions} onChange={onChangePreset} value={preset}/>
                     </div>
                   </div>
