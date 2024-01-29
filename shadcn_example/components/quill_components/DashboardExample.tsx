@@ -276,7 +276,7 @@ export default function DashExample() {
               value = ""
             }) => (
               <div>
-                <div style={{"marginBottom": 9, "marginTop": 24}}>
+                <div style={{"marginBottom": 9}}>
                   <LabelDemo children={label}/>
                 </div>
                 <div className="flex">
@@ -295,7 +295,7 @@ export default function DashExample() {
               theme = {} 
             }) => (
               <div>
-                <div style={{"marginBottom": 9, "marginTop": 24}}>
+                <div style={{"marginBottom": 9}}>
                   <LabelDemo children={label}/>
                 </div>
                 <div className="flex">
@@ -336,7 +336,7 @@ export default function DashExample() {
                 value = ""
               }) => (
                 <div>
-                  <div style={{"marginBottom": 9, "marginTop": 20}}>
+                  <div style={{"marginBottom": 9}}>
                     <Heading as='h6' size='xs'>{label}</Heading>
                   </div>
                   <div className="flex">
@@ -355,7 +355,7 @@ export default function DashExample() {
                 theme = {} 
               }) => (
                 <div>
-                  <div style={{"marginBottom": 9, "marginTop": 24}}>
+                  <div style={{"marginBottom": 9}}>
                     <LabelDemo children={label}/>
                   </div>
                   <div className="flex">

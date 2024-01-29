@@ -775,13 +775,13 @@ export default function ReportBuilderExample () {
                   <TailwindSelect options={options} onChange={onChange} value={value}/>
                 )}
                 Header = {({children}) => (
-                  <h3 className="text-base font-semibold leading-6 text-gray-900">{children}</h3>
+                  <h3 className="text-base font-semibold leading-6 text-gray-900 text-left">{children}</h3>
                 )}
                 SubHeader = {({children}) => (
-                  <h4 className="text-sm font-semibold leading-6 text-gray-900">{children}</h4>
+                  <h4 className="text-sm font-semibold leading-6 text-gray-900 text-left">{children}</h4>
                 )}
                 Label = {({children}) => (
-                  <h4 className="text-base font-semibold leading-6 text-gray-900">{children}</h4>
+                  <h4 className="text-base font-semibold leading-6 text-gray-900 text-left">{children}</h4>
                 )}
                 Modal = {({children, setIsOpen, isOpen, title, onClose}) => (
                   <TailwindModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title} onClose={onClose}/>
