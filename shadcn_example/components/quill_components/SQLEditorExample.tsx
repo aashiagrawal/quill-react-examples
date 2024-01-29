@@ -8,12 +8,6 @@ import { ShadcnTable } from '@/components/shadcn_components/Table'
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -22,10 +16,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
-import Dialog, { DialogProps } from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import { StyleContext } from '@/context/StyleContext'
 import MantineButton from '@/components/mantine_components/MantineButton'
 import MantineTextInput from '@/components/mantine_components/MantineTextInput'
 import { Loader } from '@mantine/core'
@@ -33,7 +23,6 @@ import MantineTable from '@/components/mantine_components/MantineTable'
 import { LibraryNameContext } from '@/app/layout'
 import AntdButton from '../antd_components/AntdButton'
 import { AntdTextInput } from '../antd_components/AntdTextInput'
-import { genPlaceholderStyle } from 'antd/es/input/style'
 import { Spin } from 'antd'
 import AntdTable from '../antd_components/AntdTable'
 import { ChakraButton } from '../chakra_components/ChakraButton'

@@ -28,8 +28,6 @@ import Paper from "@mui/material/Paper";
 import Dialog, { DialogProps } from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { StyleContext } from '@/context/StyleContext'
-import { Anybody } from 'next/font/google'
 import { CardComponent } from '@/components/shadcn_components/CardComponent'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -64,7 +62,8 @@ import TailwindModal from '../tailwind_components/TailwindModal'
 import TailwindSelect from '../tailwind_components/TailwindSelect'
 import TailwindCard from '../tailwind_components/TailwindCard'
 import TailwindPopover from '../tailwind_components/TailwindPopover'
-import MantineSelect from '../mantine_components/MantineSelect'
+// import MantineSelect from '../mantine_components/MantineSelect'
+import {Select as MantineSelect} from '@mantine/core';
 
 export default function ReportBuilderExample () {
 
@@ -532,8 +531,11 @@ export default function ReportBuilderExample () {
                 value,
                 label
               }) => (
-                <MantineSelect options={options} onChange={onChange} value={value}/>
-                // <NativeSelect label={label} data={options.map(option => option.label)} onChange={(event) => onChange(event.target.value)} value={value}/>
+                <MantineSelect
+                  data={options}
+                  onChange={onChange} 
+                  value={value}
+                />
               )}
               Header = {({children}) => (
                 <Title order={5}>{children}</Title>
@@ -776,10 +778,10 @@ export default function ReportBuilderExample () {
                   <h3 className="text-base font-semibold leading-6 text-gray-900">{children}</h3>
                 )}
                 SubHeader = {({children}) => (
-                  <h3 className="text-sm font-semibold leading-6 text-gray-900">{children}</h3>
+                  <h4 className="text-sm font-semibold leading-6 text-gray-900">{children}</h4>
                 )}
                 Label = {({children}) => (
-                  <h3 className="text-base font-semibold leading-6 text-gray-900">{children}</h3>
+                  <h4 className="text-base font-semibold leading-6 text-gray-900">{children}</h4>
                 )}
                 Modal = {({children, setIsOpen, isOpen, title, onClose}) => (
                   <TailwindModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title} onClose={onClose}/>
@@ -788,6 +790,7 @@ export default function ReportBuilderExample () {
                   <TailwindCard
                     children={children}
                     onClick={onClick}
+                    minHeight={200}
                   />
                 )}
                 Popover={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (

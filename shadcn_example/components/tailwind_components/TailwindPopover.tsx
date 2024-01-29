@@ -40,7 +40,7 @@ export function TailwindPopover({
             }
 
             {isOpen && (
-                <div role="tooltip" className="absolute right-0 top-full z-50 inline-block text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800" style={{ width: `${popoverWidth}px` }}>
+                <div role="tooltip" className="absolute right-0 top-full z-50 inline-block text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800" style={{ minWidth: `${popoverWidth}px` }}>
                     <div ref={contentRef} className="px-3 py-2">
                         {children}
                     </div>
