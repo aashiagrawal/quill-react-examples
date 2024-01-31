@@ -64,6 +64,7 @@ import TailwindCard from '../tailwind_components/TailwindCard'
 import TailwindPopover from '../tailwind_components/TailwindPopover'
 // import MantineSelect from '../mantine_components/MantineSelect'
 import {Select as MantineSelect} from '@mantine/core';
+import AntdCard from '../antd_components/AntdCard'
 
 export default function ReportBuilderExample () {
 
@@ -75,6 +76,7 @@ export default function ReportBuilderExample () {
     const onChangeDate= (data: object[]) => {
         console.log(data)
     }
+    console.log("this is style in report builder: ", style)
 
     const renderReportBuilder = () => {
       switch(style) {
@@ -468,6 +470,7 @@ export default function ReportBuilderExample () {
         />
           )
         case 'mantine':
+          console.log("entered mantine")
           return (
             <ReportBuilder
               onChangeQuery={onChangeQuery}
@@ -635,7 +638,7 @@ export default function ReportBuilderExample () {
                 <AntdModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title}/>
               )}
               Card = {({children, onClick}) => (
-                <MantineCard
+                <AntdCard
                   children={children}
                   onClick={onClick}
                 />
