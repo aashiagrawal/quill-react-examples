@@ -146,7 +146,8 @@ export default function DashExample() {
                   value={value}
                   label={label}
                   style={{ width: 230 }}
-                  onChange={(event) => onChange(event.target.value)}
+                  onChange={onChange}
+                  placeholder="Select"
                 >
                   {options.map((option) => (
                     <MenuItem value={option.value}>{option.label}</MenuItem>

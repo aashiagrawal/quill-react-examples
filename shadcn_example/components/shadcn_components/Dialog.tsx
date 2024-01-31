@@ -37,7 +37,7 @@ export function DialogCloseButton({
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChangeHandler}>
-      <DialogContent className="h-4/5 overflow-y-auto w-full" style={{"minWidth": 900}}>
+      <DialogContent className="h-4/5 overflow-y-auto w-full" style={{"minWidth": 800}}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>

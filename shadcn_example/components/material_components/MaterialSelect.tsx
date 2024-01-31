@@ -17,6 +17,7 @@ export default function MaterialSelect({label, options, onChange, value}) {
           id="demo-simple-select"
           value={value}
           onChange={handleChange}
+          placeholder="Select"
         >
           {options.map((option) => (
                 <MenuItem value={option.value}>{option.text}</MenuItem>

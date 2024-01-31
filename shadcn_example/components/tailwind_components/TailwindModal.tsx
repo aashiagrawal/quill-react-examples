@@ -32,7 +32,7 @@ export function TailwindModal ({children, isOpen, onClose, title, setIsOpen}: Mo
             >
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl sm:p-6">
                 <div>
-                    <div className="mt-3 text-center sm:mt-5">
+                    <div className="mt-3">
                     <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
                         {title}
                     </Dialog.Title>

@@ -16,6 +16,7 @@ export default function MantineSelect({label, options, onChange, value}: SelectC
         onChange={onChange} 
         value={value}
         className='mt-6'
+        placeholder="Select"
       />
     </div>
   );
