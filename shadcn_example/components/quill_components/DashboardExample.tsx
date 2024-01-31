@@ -72,7 +72,7 @@ export default function DashExample() {
                 value
             }) => (
                 <div>
-                    <div style={{"marginBottom": 9, "marginTop": 24}}>
+                    <div style={{"marginBottom": 9}}>
                       <LabelDemo children={label}/>
                     </div>
                     <SelectScrollable
@@ -138,7 +138,7 @@ export default function DashExample() {
               width: "100%",
             }}
             FilterDropdownComponent={({ onChange, value, options, label }) => (
-              <FormControl style={{"marginTop": 57}}>
+              <FormControl >
                 <InputLabel id="demo-simple-select-label">{label}</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"

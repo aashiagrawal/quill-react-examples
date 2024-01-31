@@ -18,6 +18,7 @@ export function AntdPopover({
             overlayStyle={{"minWidth": 300}} 
             placement="bottomRight" 
             title={title}
+            trigger="click"
         >
             <Button type="primary" style={{'backgroundColor': '#1677ff'}} onClick={onClick}>{label}</Button>
         </Popover>
