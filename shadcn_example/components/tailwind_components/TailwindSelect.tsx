@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { SelectComponentProps } from '@quillsql/react/src/Dashboard'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
@@ -7,6 +7,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 export function TailwindSelect({ options, onChange, value, label }: SelectComponentProps) {
   // console.log("this is value in tailwind: ", value)
   const [selectedLabel, setSelectedLabel] = useState("Select option");
+
   return (
     <div>
         <Menu as="div" className="relative inline-block text-left" onChange={onChange}>

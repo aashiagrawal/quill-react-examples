@@ -6,8 +6,8 @@ import { QuillProvider, Dashboard } from "@quillsql/react";
 import Navbar from '@/components/Navbar';
 import { StyleProvider } from '@/context/StyleContext';
 import { createTheme, MantineProvider } from '@mantine/core';
-import { Style2Context, Style2Provider } from '@/context/Style2Context'
 import { ChakraProvider } from '@chakra-ui/react'
+import '@mantine/dates/styles.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,7 +34,7 @@ function LibraryProvider({children}) {
    }
    
    if (style === "mantine") {
-      return <MantineProvider>{children}</MantineProvider>
+      return <MantineProvider withGlobalStyles withNormalizeCSS>{children}</MantineProvider>
    }
 
    return <>{children}</>

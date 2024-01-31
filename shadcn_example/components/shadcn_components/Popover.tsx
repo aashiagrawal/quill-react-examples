@@ -54,6 +54,9 @@ export function ShadcnPopover({
         {
           isOpen && (
             <PopoverContent onClick={onClick} className="w-300 absolute right-0 top-full" style={style} ref={parentRef}>
+                <div className="py-3">
+                  <h4 className="font-medium leading-none">{title}</h4>
+                </div>
                 {children}
             </PopoverContent>
           )

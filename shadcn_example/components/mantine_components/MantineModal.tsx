@@ -1,5 +1,6 @@
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { Modal, Button, Title } from '@mantine/core';
+
 
 type MantineModaProps = {
     children: any,
@@ -11,7 +12,7 @@ type MantineModaProps = {
 export default function MantineModal({children, setIsOpen, isOpen, title}: MantineModaProps) {
   return (
     <>
-      <Modal opened={isOpen} onClose={()=> setIsOpen(false)} title={title} size="xl">
+      <Modal opened={isOpen} onClose={()=> setIsOpen(false)} size="xl" title={title}>
         {children}
       </Modal>
     </>

@@ -214,7 +214,8 @@ export default function ReportBuilderExample () {
                 showTrigger=true,
                 parentRef=useRef(),
                 label="",
-                style={"min-width": 400}
+                style={"min-width": 400},
+                title={title}
             }) => (
                 <ShadcnPopover
                     onClose={onClose}
@@ -224,6 +225,7 @@ export default function ReportBuilderExample () {
                     parentRef= {parentRef}
                     label={label}
                     style={style}
+                    title={title}
                     
                 >{children}</ShadcnPopover>
             )}
@@ -647,6 +649,7 @@ export default function ReportBuilderExample () {
                   setIsOpen={setIsOpen}
                   showTrigger={showTrigger}
                   parentRef={parentRef}
+                  title={title}
                 />
               )}
             />
@@ -724,6 +727,7 @@ export default function ReportBuilderExample () {
                     setIsOpen={setIsOpen}
                     showTrigger={showTrigger}
                     parentRef={parentRef}
+                    title={title}
                   />
                 )}
               />
@@ -802,6 +806,7 @@ export default function ReportBuilderExample () {
                     setIsOpen={setIsOpen}
                     showTrigger={showTrigger}
                     parentRef={parentRef}
+                    title={title}
                   />
                 )}
               />

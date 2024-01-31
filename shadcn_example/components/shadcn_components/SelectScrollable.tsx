@@ -29,12 +29,12 @@ export function SelectScrollable({
 
   const validOptions = options.filter(option => option.value !== '');
   const selectTriggerStyle = width ? `w-[${width}px] z-100` : "w-[280px]";
-
+  console.log("This is value in shadcn dropdown: ", value)
   return (
     <div>
       <Select onValueChange={onChange}>
         <SelectTrigger className={selectTriggerStyle}>
-          <SelectValue placeholder={label} />
+          <SelectValue placeholder={value} />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>

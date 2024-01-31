@@ -21,7 +21,8 @@ export function ChakraPopover({
     style, 
     onClick, 
     setIsOpen, 
-    label}: PopoverComponentProps) {
+    label,
+    title}: PopoverComponentProps) {
   
     return (
         <Popover placement='bottom-end'>
@@ -35,6 +36,7 @@ export function ChakraPopover({
         <PopoverContent minWidth={300} width={'auto'}>
             <PopoverArrow />
             <PopoverCloseButton />
+            <PopoverHeader>{title}</PopoverHeader>
             <PopoverBody>{children}</PopoverBody>
         </PopoverContent>
         </Popover>

@@ -10,9 +10,15 @@ export function AntdPopover({
     style, 
     onClick, 
     setIsOpen,
-    label}: PopoverComponentProps) {
+    label,
+    title}: PopoverComponentProps) {
     return (
-        <Popover content={children} overlayStyle={{"minWidth": 300}} placement="bottomRight" >
+        <Popover 
+            content={children} 
+            overlayStyle={{"minWidth": 300}} 
+            placement="bottomRight" 
+            title={title}
+        >
             <Button type="primary" style={{'backgroundColor': '#1677ff'}} onClick={onClick}>{label}</Button>
         </Popover>
     )

@@ -1,4 +1,4 @@
-import { Popover, Text, Button, Container } from '@mantine/core';
+import { Popover, Text, Button, Container, Title } from '@mantine/core';
 
 type MantinePopoverProps = {
     label: string,
@@ -29,6 +29,7 @@ export default function MantinePopover({label, onClick, children, isOpen, setIsO
         </Popover.Target>
         <Popover.Dropdown>
           <div>
+            <Title order={5}>{title}</Title>
               {children}
           </div>
         </Popover.Dropdown>
