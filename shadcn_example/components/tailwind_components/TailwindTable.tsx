@@ -16,7 +16,8 @@ const TailwindTable = ({ rows, columns, height }: TableComponentProps) => {
     // Functions to change page
     const nextPage = () => setPageIndex((current) => Math.min(current + 1, totalPages - 1));
     const previousPage = () => setPageIndex((current) => Math.max(current - 1, 0));
-
+    
+    const hasData = rows && rows.length > 0;
 
     const stickyHeaderStyle = {
     position: 'sticky',
@@ -56,25 +57,37 @@ const TailwindTable = ({ rows, columns, height }: TableComponentProps) => {
                 </div>
                 </div>
             </div>
-            <div className="flex justify-between my-4">
-                <button
-                    onClick={previousPage}
-                    disabled={pageIndex === 0}
-                    className="px-4 py-2 border border-gray-300 text-sm rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                    Previous
-                </button>
-                <span>
-                Page {pageIndex + 1} of {totalPages}
-                </span>
-                <button
-                    onClick={nextPage}
-                    disabled={pageIndex >= totalPages - 1}
-                    className="px-4 py-2 border border-gray-300 text-sm rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                Next
-                </button>
-            </div>
+            {hasData && (
+                <div className="sticky-footer" style={{ 
+                    position: 'sticky',
+                    bottom: 0,
+                    backgroundColor: 'white',
+                    padding: '10px',
+                    display: 'flex',
+                    justifyContent: 'end',
+                    zIndex: 1
+                    }}>
+                    <div className="flex justify-between my-4">
+                        <button
+                            onClick={previousPage}
+                            disabled={pageIndex === 0}
+                            className="mr-3 px-4 py-2 border border-gray-300 text-sm rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                            Previous
+                        </button>
+                        <span className="my-2">
+                        Page {pageIndex + 1} of {totalPages} 
+                        </span>
+                        <button
+                            onClick={nextPage}
+                            disabled={pageIndex >= totalPages - 1}
+                            className="ml-3 px-4 py-2 border border-gray-300 text-sm rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                        Next
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

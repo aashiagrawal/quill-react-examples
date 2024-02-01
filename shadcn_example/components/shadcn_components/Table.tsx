@@ -46,7 +46,7 @@ export function ShadcnTable<TData, TValue>({
   });
 
   return (
-    <div>
+    <div className="table-container" style={{ position: 'relative' }}>
       <div className="rounded-md border" style={{"width": "100%", "overflow": "scroll"}}>
         <Table>
           <TableHeader>
@@ -56,12 +56,6 @@ export function ShadcnTable<TData, TValue>({
                   return (
                     <TableHead key={header.id}>
                       {header.column.columnDef.accessor}
-                      {/* {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )} */}
                     </TableHead>
                   )
                 })}
@@ -97,7 +91,17 @@ export function ShadcnTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-        <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="sticky-footer" style={{ 
+        position: 'sticky',
+        bottom: 0,
+        backgroundColor: 'white',
+        borderTop: '1px solid #ddd',
+        padding: '10px',
+        display: 'flex',
+        justifyContent: 'end',
+        zIndex: 1
+      }}>
+        <div className="flex items-center justify-end space-x-2 py-4 ">
           <Button
             variant="outline"
             size="sm"
@@ -116,56 +120,6 @@ export function ShadcnTable<TData, TValue>({
           </Button>
         </div>
       </div>
+      </div>
   )
 }
-
-// import { useState } from "react";
-// import {
-//     Table,
-//     TableBody,
-//     TableCaption,
-//     TableCell,
-//     TableFooter,
-//     TableHead,
-//     TableHeader,
-//     TableRow,
-//   } from "@/components/ui/table";
-  
-//   import {
-//     ColumnDef,
-//     flexRender,
-//     getCoreRowModel,
-//     getPaginationRowModel,
-//     useReactTable,
-//   } from "@tanstack/react-table"
-
-//   interface ShadcnTableProps {
-//     columns: any[];  // Assuming columns is an array of any type
-//     rows: any[];     // Assuming rows is an array of arrays, each representing a row
-//     height: string;  // Height of the table
-//   }
-  
-//   export function TableDemo({ columns, rows, height }: ShadcnTableProps) {
-
-//     return (
-//             <Table>
-//                 <TableHeader>
-//                 <TableRow>
-//                     {columns.map((column, columnIndex) => (
-//                     <TableHead key={"sqlCol" + columnIndex}>{column.field}</TableHead>
-//                     ))}
-//                 </TableRow>
-//                 </TableHeader>
-//                 <TableBody>
-//                 {rows.map((row, rowIndex) => (
-//                     <TableRow key={"sqlRow" + rowIndex}>
-//                         {columns.map((column, columnIndex) => (
-//                             <TableCell key={"sqlCol" + columnIndex}>{row[column.field]}</TableCell>
-//                         ))} 
-//                     </TableRow>
-//                 ))}
-//                 </TableBody>
-//             </Table>
-//     );
-//   }
-

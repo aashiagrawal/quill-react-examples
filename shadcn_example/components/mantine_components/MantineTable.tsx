@@ -33,11 +33,22 @@ const MantineTable = ({ rows, columns }) => {
           ))}
         </Table.Tbody>
       </Table>
-      <Pagination
-        total={Math.ceil(rows.length / rowsPerPage)}
-        value={currentPage}
-        onChange={handlePageChange}
-      />
+      <div className="sticky-footer" style={{ 
+        position: 'sticky',
+        bottom: 0,
+        backgroundColor: 'white',
+        borderTop: '1px solid #ddd',
+        padding: '10px',
+        display: 'flex',
+        justifyContent: 'end',
+        zIndex: 1
+      }}>
+        <Pagination
+          total={Math.ceil(rows.length / rowsPerPage)}
+          value={currentPage}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };

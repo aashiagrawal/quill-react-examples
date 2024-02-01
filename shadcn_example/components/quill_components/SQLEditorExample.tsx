@@ -140,6 +140,7 @@ export default function SQLEditorExample () {
             TableComponent={({ rows, columns }) => {
               const [page, setPage] = React.useState(0);
               const [rowsPerPage, setRowsPerPage] = React.useState(10);
+              const hasData = rows && rows.length > 0;
 
               const handleChangePage = (event: unknown, newPage: number) => {
                 setPage(newPage);
@@ -194,15 +195,28 @@ export default function SQLEditorExample () {
                       </TableBody>
                     </Table>
                   </TableContainer>
-                  <TablePagination
-                    rowsPerPageOptions={[10, 25, 100]}
-                    component="div"
-                    count={rows.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                  />
+                  {hasData && (
+                    <div className="sticky-footer" style={{ 
+                        position: 'sticky',
+                        bottom: 0,
+                        backgroundColor: 'white',
+                        borderTop: '1px solid #ddd',
+                        padding: '10px',
+                        display: 'flex',
+                        justifyContent: 'end',
+                        zIndex: 1
+                      }}>
+                      <TablePagination
+                        rowsPerPageOptions={[10, 25, 100]}
+                        component="div"
+                        count={rows.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                      />
+                    </div>
+                  )}
                 </Paper>
               );
             }}
