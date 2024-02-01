@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 export default function MaterialSelect({label, options, onChange, value}) {
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onChange(event.target.value);
   };
 
@@ -17,11 +16,12 @@ export default function MaterialSelect({label, options, onChange, value}) {
           id="demo-simple-select"
           value={value}
           onChange={handleChange}
-          placeholder="Select"
+          displayEmpty
         >
+          <MenuItem value="" disabled>Select</MenuItem>
           {options.map((option) => (
-                <MenuItem value={option.value}>{option.text}</MenuItem>
-            ))}
+            <MenuItem key={option.value} value={option.value}>{option.text}</MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>

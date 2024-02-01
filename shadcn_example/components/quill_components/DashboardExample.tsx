@@ -182,7 +182,7 @@ export default function DashExample() {
                           onChange={(dateRange:[Dayjs|undefined, Dayjs|undefined]) => {onChangeDateRange([dateRange[0], dateRange[1]])}}
                         />
                       </div>
-                      <div>
+                      <div style={{"width": 190}}>
                         <MaterialSelect label={label} options={presetOptions}
                             onChange= {onChangePreset}
                             value={preset}/>
@@ -361,11 +361,6 @@ export default function DashExample() {
                   </div>
                   <div className="flex">
                     <div style={{"marginRight": 10}}>
-                      {/* <ShadcnDatePickerAdapter 
-                        dateRange={dateRange}
-                        label={label}
-                        onChangeDateRange={onChangeDateRange}
-                      /> */}
                       <ChakraDatePicker dateRange={dateRange} onChangeDateRange={onChangeDateRange}/>
                     </div>
                     <div>

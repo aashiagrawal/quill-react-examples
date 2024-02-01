@@ -3,10 +3,7 @@ import { DateRange, DateRangePickerOption } from '@quillsql/react/src/DateRangeP
 import { DateRange as ReactDateRange} from 'react-day-picker'
 import { DatePickerWithRange } from '../components/shadcn_components/DatePickerWithRange'
 import React, {useState, useEffect} from 'react'
-
-// interface QuillShadcnDateRangePickerComponentProps extends Omit<ShadcnDateRangePickerComponentProps & DateRangePickerProps, "className"> {
-//     className: string
-//   }
+import dayjs from 'dayjs'
 
 type ShadcnDatePickerAdapterProps = {
     dateRange: DateRange;
@@ -15,10 +12,18 @@ type ShadcnDatePickerAdapterProps = {
 };
 
 const ShadcnDatePickerAdapter = (props: ShadcnDatePickerAdapterProps) => {
-    console.log("shadcn daterange: ", props.dateRange)
-    const transformedDateRange = {
-        from: props.dateRange[0] || undefined,
-        to: props.dateRange[1] || undefined,
+    let transformedDateRange = {}
+
+    if (dayjs.isDayjs(props.dateRange[0])) {
+      transformedDateRange = {
+        from: props.dateRange[0].toDate() || undefined,
+        to: props.dateRange[1].toDate() || undefined,
+      }
+    } else {
+            transformedDateRange = {
+            from: props.dateRange[0] || undefined,
+            to: props.dateRange[1] || undefined,
+        }
     }
 
     // Date Range change handler compatible with shadcn Date Range component
