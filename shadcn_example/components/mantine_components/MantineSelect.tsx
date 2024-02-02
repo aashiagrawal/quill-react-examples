@@ -3,6 +3,7 @@ import { SelectComponentProps } from '@quillsql/react/src/Dashboard';
 
 export default function MantineSelect({label, options, onChange, value}: SelectComponentProps) {
   // Transform options to have a 'label' property
+  console.log("this is options: ", options)
   const transformedOptions = options.map(option => ({
     value: option.value,
     label: option.text || option.label // Use 'text' as the label

@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { SQLEditor } from '@quillsql/react'
 import { ButtonDemo } from '@/components/shadcn_components/Button'
 import { TextInput } from '@/components/shadcn_components/TextInput'
@@ -18,7 +18,7 @@ import TablePagination from "@mui/material/TablePagination";
 import Paper from "@mui/material/Paper";
 import MantineButton from '@/components/mantine_components/MantineButton'
 import MantineTextInput from '@/components/mantine_components/MantineTextInput'
-import { Loader } from '@mantine/core'
+import { Loader, Title } from '@mantine/core'
 import MantineTable from '@/components/mantine_components/MantineTable'
 import { LibraryNameContext } from '@/app/layout'
 import AntdButton from '../antd_components/AntdButton'
@@ -32,6 +32,26 @@ import ChakraTable from '../chakra_components/ChakraTable'
 import TailwindButton from '../tailwind_components/TailwindButton'
 import TailwindTextInput from '../tailwind_components/TailwindTextInput'
 import TailwindTable from '../tailwind_components/TailwindTable'
+import { SelectScrollable } from '../shadcn_components/SelectScrollable'
+import { DialogCloseButton } from '../shadcn_components/Dialog'
+import { ShadcnPopover } from '../shadcn_components/Popover'
+import { LabelDemo } from '../shadcn_components/Label'
+import { Dialog, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Popover, Select, Typography } from '@mui/material'
+import MantineModal from '../mantine_components/MantineModal'
+import MantinePopover from '../mantine_components/MantinePopover'
+import { AntdSelect } from '../antd_components/AntdSelect'
+import { AntdHeader } from '../antd_components/AntdHeader'
+import { AntdModal } from '../antd_components/AntdModal'
+import { AntdPopover } from '../antd_components/AntdPopover'
+import { ChakraSelect } from '../chakra_components/ChakraSelect'
+import ChakraModal from '../chakra_components/ChakraModal'
+import ChakraHeader from '../chakra_components/ChakraHeader'
+import ChakraPopover from '../chakra_components/ChakraPopover'
+import TailwindModal from '../tailwind_components/TailwindModal'
+import TailwindSelect from '../tailwind_components/TailwindSelect'
+import TailwindPopover from '../tailwind_components/TailwindPopover'
+import {Select as MantineSelect} from '@mantine/core';
+
 
 export default function SQLEditorExample () {
   // const { style, setStyle } = useContext(StyleContext);
@@ -102,6 +122,67 @@ export default function SQLEditorExample () {
                 )}
               </div>
             )}
+            SelectComponent={({
+              label,
+              onChange,
+              value,
+              options
+            }) => (
+                <div className="pt-2">
+                  <SelectScrollable
+                      label={label}
+                      options= {options}
+                      onChange={onChange}
+                      value={value}
+                  />
+                </div>
+            )}
+            LabelComponent={({
+              children=""
+            }) => (
+                <LabelDemo
+                >{children}</LabelDemo>
+            )}
+            ModalComponent={({
+              children,
+              isOpen,
+              onClose,
+              title,
+              setIsOpen
+            }) => (
+                <div >
+                    <DialogCloseButton
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    title={title}
+                    setIsOpen={setIsOpen}
+                    >{children}</DialogCloseButton>
+                </div>
+            )}
+            PopoverComponent={({
+              children={},
+              onClose=() => console.log("closed popover"),
+              isOpen=false,
+              setIsOpen=(open) => isOpen=open,
+              showTrigger=true,
+              parentRef=useRef(),
+              label="",
+              style={"min-width": 400},
+              title={title}
+            }) => (
+                <ShadcnPopover
+                    onClose={onClose}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    showTrigger={showTrigger}
+                    parentRef= {parentRef}
+                    label={label}
+                    style={style}
+                    title={title}
+                    
+                >{children}</ShadcnPopover>
+            )}
+
           />
         )
       case "material-ui":
@@ -220,6 +301,123 @@ export default function SQLEditorExample () {
                 </Paper>
               );
             }}
+            SelectComponent={({ onChange, value, options, label }) => (
+              <FormControl>
+                <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={value}
+                  label={label}
+                  style={{ width: 230 }}
+                  onChange={(event) => onChange(event.target.value)}
+                >
+                  {options.map((option) => (
+                    <MenuItem value={option.value}>{option.label}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            )}
+            HeaderComponent={({ children }) => (
+              <Typography
+                style={{ fontWeight: "600", marginBottom: 8 }}
+                variant="h7"
+                component="h2"
+              >
+                {children}
+              </Typography>
+            )}
+            SubHeaderComponent={({ children }) => (
+              <Typography
+                style={{ marginBottom: 12, fontWeight: "600", fontSize: 14 }}
+                // variant="h8"
+                // component="h2"
+              >
+                {children}
+              </Typography>
+            )}
+            LabelComponent={({ children }) => <div></div>}
+            ModalComponent={({ children, setIsOpen, isOpen, title }) => (
+              <Dialog
+                open={isOpen}
+                onClose={() => setIsOpen(false)}
+                scroll={"paper"}
+                aria-labelledby="scroll-dialog-title"
+                aria-describedby="scroll-dialog-description"
+                maxWidth="lg"
+                // style={{ minWidth: 700 }}
+              >
+                <DialogTitle style={{ fontWeight: 600 }} id="scroll-dialog-title">
+                  {title}
+                </DialogTitle>
+                <DialogContent style={{ padding: "0px" }} dividers>
+                  {children}
+                </DialogContent>
+              </Dialog>
+            )}
+            PopoverComponent={({
+              onClick,
+              label,
+              children,
+              isOpen,
+              setIsOpen,
+              showTrigger,
+              parentRef,
+              title,
+            }) => {
+              const [anchorEl, setAnchorEl] = useState(null);
+  
+              useEffect(() => {
+                if (!showTrigger && parentRef && parentRef.current) {
+                  setAnchorEl(parentRef.current);
+                }
+              }, [parentRef, isOpen]);
+  
+              const open = Boolean(anchorEl);
+              const id = open ? "simple-popover" : undefined;
+              return (
+                <div>
+                  {showTrigger && (
+                    <Button
+                      // aria-describedby={id}
+                      variant="outlined"
+                      onClick={(event) => {
+                        setIsOpen(true);
+                        console.log("CURRENT TARGET: ", event.currentTarget);
+                        setAnchorEl(event.currentTarget);
+                      }}
+                    >
+                      {label}
+                    </Button>
+                  )}
+                  <Popover
+                    // id={id}
+                    open={isOpen}
+                    anchorEl={anchorEl}
+                    onClose={() => {
+                      setIsOpen(false);
+                      setAnchorEl(null);
+                    }}
+                    anchorOrigin={{
+                      vertical: showTrigger ? "bottom" : "center",
+                      horizontal: showTrigger ? "right" : "left",
+                    }}
+                  >
+                    <div style={{ padding: 20, minWidth: 400 }}>
+                      <Typography
+                        style={{ fontWeight: "600" }}
+                        variant="h7"
+                        component="h2"
+                      >
+                        {title}
+                      </Typography>
+                      <br />
+                      <div>{children}</div>
+                    </div>
+                  </Popover>
+                </div>
+              );
+            }}
           />
         )
       case 'mantine':
@@ -269,6 +467,47 @@ export default function SQLEditorExample () {
                   />
               </div>
             )}
+            SelectComponent = {({
+              options,
+              onChange,
+              value,
+              label
+            }) => (
+              <MantineSelect
+                data={options}
+                onChange={onChange} 
+                value={value}
+              />
+            )}
+            HeaderComponent = {({children}) => (
+              <Title order={5}>{children}</Title>
+            )}
+            SubHeaderComponent = {({children}) => (
+              <Title order={5}>{children}</Title>
+            )}
+            LabelComponent = {({children}) => (
+              <Title order={6}>{children}</Title>
+            )}
+            ModalComponent = {({children, setIsOpen, isOpen, title}) => (
+              <MantineModal
+                children={children}
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
+                title={title}
+              />
+            )}
+            PopoverComponent={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+              <MantinePopover
+                label={label}
+                onClick={onClick}
+                children={children}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                showTrigger={showTrigger}
+                parentRef={parentRef}
+                title={title}
+              />
+            )}
           />
         )
       case 'antd':
@@ -301,6 +540,33 @@ export default function SQLEditorExample () {
                   columns={columns}
                 />
               </div>
+            )}
+            SelectComponent = {({options, onChange, value, label}) => (
+              <AntdSelect options={options.map(option => option.label)} onChange={onChange} value={value}/>
+            )}
+            HeaderComponent = {({children}) => (
+              <AntdHeader children={children} subheader={false}/>
+            )}
+            SubHeaderComponent = {({children}) => (
+              <AntdHeader children={children} subheader={true}/>
+            )}
+            LabelComponent = {({children}) => (
+              <AntdHeader children={children} subheader={true}/>
+            )}
+            ModalComponent = {({children, setIsOpen, isOpen, title}) => (
+              <AntdModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title}/>
+            )}
+            PopoverComponent ={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+              <AntdPopover
+                label={label}
+                onClick={onClick}
+                children={children}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                showTrigger={showTrigger}
+                parentRef={parentRef}
+                title={title}
+              />
             )}
           />
       )
@@ -335,6 +601,33 @@ export default function SQLEditorExample () {
                 />
               </div>
             )}
+            SelectComponent = {({options, onChange, value, label}) => (
+              <ChakraSelect options={options} onChange={onChange} value={value}/>
+            )}
+            HeaderComponent = {({children}) => (
+              <ChakraHeader children={children} subheader={false}/>
+            )}
+            SubHeaderComponent = {({children}) => (
+              <ChakraHeader children={children} subheader={true}/>
+            )}
+            LabelComponent = {({children}) => (
+              <ChakraHeader children={children} subheader={true}/>
+            )}
+            ModalComponent = {({children, setIsOpen, isOpen, title}) => (
+              <ChakraModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title}/>
+            )}
+            PopoverComponent={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+              <ChakraPopover
+                label={label}
+                onClick={onClick}
+                children={children}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                showTrigger={showTrigger}
+                parentRef={parentRef}
+                title={title}
+              />
+            )}
           />
       )
       case 'tailwind':
@@ -367,6 +660,33 @@ export default function SQLEditorExample () {
                   columns={columns}
                 />
               </div>
+            )}
+            SelectComponent = {({options, onChange, value, label}) => (
+              <TailwindSelect options={options} onChange={onChange} value={value}/>
+            )}
+            HeaderComponent = {({children}) => (
+              <h3 className="text-base font-semibold leading-6 text-gray-900 text-left">{children}</h3>
+            )}
+            SubHeaderComponent = {({children}) => (
+              <h4 className="text-sm font-semibold leading-6 text-gray-900 text-left">{children}</h4>
+            )}
+            LabelComponent = {({children}) => (
+              <h4 className="text-base font-semibold leading-6 text-gray-900 text-left">{children}</h4>
+            )}
+            ModalComponent = {({children, setIsOpen, isOpen, title, onClose}) => (
+              <TailwindModal children={children} setIsOpen={setIsOpen} isOpen={isOpen} title={title} onClose={onClose}/>
+            )}
+            PopoverComponent ={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (
+              <TailwindPopover
+                label={label}
+                onClick={onClick}
+                children={children}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                showTrigger={showTrigger}
+                parentRef={parentRef}
+                title={title}
+              />
             )}
           />
       )
