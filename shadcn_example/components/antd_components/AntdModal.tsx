@@ -13,7 +13,7 @@ export function AntdModal({children, isOpen, onClose, title, setIsOpen, theme}: 
 
   return (
     <>
-      <Modal title={title} open={isOpen} width={800} footer={null} onCancel={handleCancel}>
+      <Modal title={title} open={isOpen} width={750} footer={null} onCancel={handleCancel}>
         {children}
       </Modal>
     </>

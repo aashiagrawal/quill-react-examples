@@ -22,9 +22,9 @@ export function ChakraModal({children, isOpen, onClose, title, setIsOpen}: Modal
 
     return (
         <>
-        <Modal isOpen={isOpen} onClose={handleClose} size='xl'>
+        <Modal isOpen={isOpen} onClose={handleClose} size='lg'>
             <ModalOverlay />
-            <ModalContent maxW={800}>
+            <ModalContent maxW={720}>
                 <ModalHeader>{title}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>

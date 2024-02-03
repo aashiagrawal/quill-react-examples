@@ -28,8 +28,8 @@ export function SelectScrollable({
 }: ShadcnSelectScrollableProps) {
 
   const validOptions = options.filter(option => option.value !== '');
-  const selectTriggerStyle = width ? `w-[${width}px] z-100` : "w-[280px]";
-  console.log("This is value in shadcn dropdown: ", value)
+  const selectTriggerStyle = width ? `w-[${width}px] z-100` : "w-[230px]";
+
   return (
     <div>
       <Select onValueChange={onChange}>

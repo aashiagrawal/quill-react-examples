@@ -11,7 +11,7 @@ export function ChakraTextInput({onChange, label, value, placeholder, id}: TextI
     onChange(newValue); // Pass only the value, not the entire event
   };
   return (
-    <Input onChange={onChangeHandler} placeholder={placeholder} value={currValue} id={id}/>
+    <Input className='max-w-48' onChange={onChangeHandler} placeholder={placeholder} value={currValue} id={id}/>
   )
 }
 

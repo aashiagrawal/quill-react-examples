@@ -79,6 +79,9 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       // ... any other extensions from your original config
+      maxWidth: {
+        '2.5xl': '45rem',
+      },
     },
   },
   plugins: [
