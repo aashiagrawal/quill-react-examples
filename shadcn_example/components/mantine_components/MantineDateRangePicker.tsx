@@ -16,14 +16,14 @@ export default function MantineDateRangePicker({dateRange, onChangeDateRange, la
             value={dateRange}
             onChange={onChangeDateRange}
             numberOfColumns={2}
-            styles={{
-              monthCell: {
-                // "&[data-selected]": {
-                  backgroundColor: "red",
-                  // color: "white",
-                // },
-              }
-            }}
+            // styles={{
+            //   monthCell: {
+            //     // "&[data-selected]": {
+            //       backgroundColor: "red",
+            //       // color: "white",
+            //     // },
+            //   }
+            // }}
           />
     </div>
   );
