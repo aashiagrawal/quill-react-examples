@@ -9,7 +9,7 @@ type ChakraCardProps = {
 
 export function ChakraCard({dashboardName, children, onClick, minHeight}: ChakraCardProps) {
   return (
-    <Card onClick={onClick} minHeight={200} >
+    <Card onClick={onClick} minHeight={220} >
         {dashboardName && 
           <CardHeader>
               <Heading size='md'>{dashboardName}</Heading>

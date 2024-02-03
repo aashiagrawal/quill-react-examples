@@ -21,7 +21,7 @@ export function MantineCard({dashboardName, children, onClick}:MantineCardProps)
     //     </CardContent>
     // </Card>
 
-    <Card shadow="sm" padding="lg" radius="md" withBorder onClick={onClick} style={{"minHeight": 200}}>
+    <Card shadow="sm" padding="lg" radius="md" withBorder onClick={onClick} style={{minHeight: 220}}>
         {
           dashboardName && 
           <Text fw={500}>{dashboardName}</Text>

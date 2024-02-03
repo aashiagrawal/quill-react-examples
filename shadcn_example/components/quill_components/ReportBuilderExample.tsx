@@ -798,7 +798,7 @@ export default function ReportBuilderExample () {
                   <TailwindCard
                     children={children}
                     onClick={onClick}
-                    minHeight={200}
+                    minHeight={220}
                   />
                 )}
                 Popover={({label, onClick, children, isOpen, setIsOpen, showTrigger, parentRef, title}) => (

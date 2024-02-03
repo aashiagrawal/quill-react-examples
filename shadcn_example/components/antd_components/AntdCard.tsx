@@ -9,7 +9,7 @@ type AntdCardProps = {
 
 export function AntdCard({dashboardName, children, onClick}: AntdCardProps) {
     return (
-        <Card title={dashboardName || undefined}  onClick={onClick} style={{"minHeight": 200}}>
+        <Card title={dashboardName || undefined}  onClick={onClick} style={{minHeight: 220}}>
             {children}
         </Card>
     )

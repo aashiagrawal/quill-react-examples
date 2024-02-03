@@ -9,7 +9,7 @@ type ShadcnLabelProps = {
 }
 export function CardComponent({dashboardName, children, onClick, minHeight}:ShadcnLabelProps) {
   return (
-    <Card onClick={onClick?onClick: undefined} style={minHeight? minHeight: {minHeight:210}}>
+    <Card onClick={onClick?onClick: undefined} style={{ minHeight: 220 }}>
         {dashboardName && (
             <CardHeader>
                 <CardTitle>
