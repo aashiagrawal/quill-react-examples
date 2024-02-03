@@ -28,7 +28,7 @@ export function TailwindPopover({
     useEffect(() => {
         if (isOpen && contentRef.current) {
             const width = contentRef.current.offsetWidth;
-            setPopoverWidth(Math.max(width, 300)); // Ensure minimum width of 300 pixels
+            setPopoverWidth(Math.max(width, 516)); // Ensure minimum width of 300 pixels
         }
     }, [isOpen, children]);
 
@@ -41,7 +41,7 @@ export function TailwindPopover({
             }
 
             {isOpen && (
-                <div role="tooltip" className="absolute right-0 top-full z-50 inline-block text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800" style={{ minWidth: `${popoverWidth}px` }}>
+                <div role="tooltip" className="mt-2 absolute right-0 top-full z-50 inline-block text-sm text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800" style={{ minWidth: `${popoverWidth}px` }}>
                     <div className="px-3 py-2 font-semibold text-gray-900">{title}</div>
                     <div ref={contentRef} className="px-3 py-2">
                         {children}

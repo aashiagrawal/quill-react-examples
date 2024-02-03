@@ -18,8 +18,8 @@ export function ChakraSelect({ options, onChange, value, label }: ShadcnSelectSc
     };
   
     return (
-      <div>
-        <Select placeholder='Select' onChange={handleChange} value={value} style={{"width": "185px"}}>
+      <div style={{"width": "185px"}}> 
+        <Select placeholder='Select' onChange={handleChange} value={value}>
           {validOptions.map(option => (
             <option key={option.value} value={option.value}>
               {option.text || option.label}

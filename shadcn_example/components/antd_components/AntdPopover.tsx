@@ -15,7 +15,7 @@ export function AntdPopover({
     return (
         <Popover 
             content={children} 
-            overlayStyle={{"minWidth": 300}} 
+            overlayStyle={{"minWidth": 516}} 
             placement="bottomRight" 
             title={title}
             trigger="click"

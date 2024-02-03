@@ -540,6 +540,7 @@ export default function ReportBuilderExample () {
                   data={options}
                   onChange={onChange} 
                   value={value}
+                  style={{"width":"180px"}}
                 />
               )}
               Header = {({children}) => (

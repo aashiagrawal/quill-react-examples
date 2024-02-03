@@ -33,7 +33,7 @@ export function ChakraPopover({
                     </PopoverTrigger>
                 </PopoverAnchor>
             }
-        <PopoverContent minWidth={300} width={'auto'}>
+        <PopoverContent minWidth={516} width={'auto'}>
             <PopoverArrow />
             <PopoverCloseButton />
             <PopoverHeader>{title}</PopoverHeader>

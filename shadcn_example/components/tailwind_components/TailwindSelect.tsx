@@ -6,7 +6,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 export function TailwindSelect({ options, onChange, value, label }: SelectComponentProps) {
   // console.log("this is value in tailwind: ", value)
-  const [selectedLabel, setSelectedLabel] = useState("Select option");
+  const [selectedLabel, setSelectedLabel] = useState("Select");
 
   return (
     <div>

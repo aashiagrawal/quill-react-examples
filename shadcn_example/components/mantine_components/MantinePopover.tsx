@@ -19,7 +19,7 @@ export default function MantinePopover({label, onClick, children, isOpen, setIsO
     }
   };  
   return (
-      <Popover styles={{ dropdown: { minWidth: '300px' } }} withArrow shadow="md" opened={isOpen} onClose={handleClose} position='bottom-end'>
+      <Popover styles={{ dropdown: { minWidth: '516px' } }} withArrow shadow="md" opened={isOpen} onClose={handleClose} position='bottom-end'>
         <Popover.Target>
           {
             showTrigger 
