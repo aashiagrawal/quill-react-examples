@@ -37,7 +37,6 @@ const MantineTable = ({ rows, columns }) => {
         position: 'sticky',
         bottom: 0,
         backgroundColor: 'white',
-        borderTop: '1px solid #ddd',
         padding: '10px',
         display: 'flex',
         justifyContent: 'end',
