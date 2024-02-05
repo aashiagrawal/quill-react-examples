@@ -13,6 +13,11 @@ export function AntdTextInput({onChange, label, value, placeholder, id}: TextInp
     };
   
     return (
-        <Input placeholder={placeholder} onChange={onChangeHandler} value={currValue} id={id} className="max-w-48"/>
+        <Input 
+        placeholder={placeholder} 
+        onChange={onChangeHandler} 
+        value={currValue} id={id} 
+        style={{width:"200px"}}
+        />
     )
 }

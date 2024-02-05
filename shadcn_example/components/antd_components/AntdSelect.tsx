@@ -13,7 +13,7 @@ export function AntdSelect({options, onChange, value}) {
 
     return (
         <Select
-          style={{ width: 200 }}
+          style={{ width: "200px" }}
           placeholder="Select"
           onChange={onChange}
           options={convertedOptions}

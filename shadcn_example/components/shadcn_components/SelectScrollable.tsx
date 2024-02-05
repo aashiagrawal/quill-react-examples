@@ -33,7 +33,7 @@ export function SelectScrollable({
   return (
     <div>
       <Select onValueChange={onChange}>
-        <SelectTrigger className={selectTriggerStyle}>
+        <SelectTrigger style={{width: 206}}> {/*className={selectTriggerStyle}*/}
           <SelectValue placeholder="Select" />
         </SelectTrigger>
         <SelectContent>

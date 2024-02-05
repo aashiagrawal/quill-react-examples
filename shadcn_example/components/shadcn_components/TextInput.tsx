@@ -19,7 +19,13 @@ export function TextInput({ onChange, value, id, placeholder }: ShadcnInputProps
 
   return (
     <div>
-      <Input onChange={onChangeHandler} value={currValue} id={id} placeholder={placeholder} style={{"minWidth": "60px"}}/>
+      <Input 
+      onChange={onChangeHandler} 
+      value={currValue} 
+      id={id} 
+      placeholder={placeholder} 
+      style={{width: "206px"}}
+      />
     </div>
   )
 }

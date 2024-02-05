@@ -24,6 +24,7 @@ export default function MantineTextInput({onChange, label, value, placeholder}: 
       placeholder={placeholder}
       onChange={onChangeHandler}
       value={currValue}
+      style={{width:"206px"}}
     />
   );
 }
