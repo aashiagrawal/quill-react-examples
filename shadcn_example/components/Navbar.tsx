@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
-import { StyleContext } from '@/context/StyleContext'
 import { Toggle } from './ui/toggle';
 import { LibraryNameContext } from '@/app/layout';
 
@@ -16,7 +15,6 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  // const { style, setStyle, showCode, setShowCode } = useContext(StyleContext);
   const [ style, setStyle, showCode, setShowCode ] = useContext(LibraryNameContext);
 
   const [navigation, setNavigation] = useState(initialNavigation);
@@ -37,6 +35,8 @@ const Navbar = () => {
     setNavigation(updatedNavigation);
 
   }, [activeItem, selectedOption]);
+
+  console.log("this is show code: ", showCode)
 
   return (
     <Disclosure as="nav" className="bg-gray-800">

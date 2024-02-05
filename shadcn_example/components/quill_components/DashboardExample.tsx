@@ -15,6 +15,7 @@ import { CardComponent } from '@/components/shadcn_components/CardComponent'
 import { CardHeader, CardContent, Card, Typography } from '@mui/material'
 import { LabelDemo } from '@/components/shadcn_components/Label'
 import { MantineCard } from '@/components/mantine_components/MantineCard'
+import { Title } from '@mantine/core'
 import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { LibraryNameContext } from '@/app/layout'
 import { AntdDatePicker } from '../antd_components/AntdDatePicker'
@@ -219,9 +220,14 @@ export default function DashExample() {
                 onChange = (preset) => console.log("Preset Changed:", preset), 
                 value = ""
               }) => (
+                <div>
+                  <div style={{"marginBottom": 9}}>
+                    <Title order={6}>{label}</Title>
+                  </div>
                   <div className="flex">
                     <MantineSelect label={label} options={options} onChange={onChange} value={value}/>
                   </div>
+                </div>
               )}
               DateRangePickerComponent={({ 
                 dateRange = dateProp as DateRange,
@@ -234,12 +240,15 @@ export default function DashExample() {
                 theme = {} 
               }) => (
                 <div>
+                  <div style={{"marginBottom": 9}}>
+                    <Title order={6}>{label}</Title>
+                  </div>
                   <div className="flex">
                     <div style={{"marginRight": 10}}>
                       <MantineDateRangePicker
                         dateRange={dateRange}
                         onChangeDateRange={onChangeDateRange}
-                        label={label}
+
                       />
                     </div>
                     <div>

@@ -4,15 +4,13 @@ import { DateRange } from '@quillsql/react/src/DateRangePicker/DateRangePicker';
 type MantineDateRangePickerProps = {
   dateRange: DateRange | undefined
   onChangeDateRange: (value: DateRange) => void
-  label: string
 }
 
-export default function MantineDateRangePicker({dateRange, onChangeDateRange, label}: MantineDateRangePickerProps) {
+export default function MantineDateRangePicker({dateRange, onChangeDateRange}: MantineDateRangePickerProps) {
   return (
     <div>
           <DatePickerInput
             type="range"
-            label={label}
             value={dateRange}
             onChange={onChangeDateRange}
             numberOfColumns={2}
