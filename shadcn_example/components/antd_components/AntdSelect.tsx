@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select } from 'antd';
 
-export function AntdSelect({options, onChange, value}) {
+export function AntdSelect({options, onChange, value, style}) {
     // Adding a default 'Select' option
     const defaultOption = { label: "Select", value: "" };
     console.log("this is options: ", options)

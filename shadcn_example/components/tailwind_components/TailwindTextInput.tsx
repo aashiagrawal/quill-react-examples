@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { TextInputComponentProps } from '@quillsql/react/src/components/UiComponents'
 
-export function TailwindTextInput({onChange, label, value, placeholder, id}: TextInputComponentProps) {
+export function TailwindTextInput({onChange, label, value, placeholder, id, style}: TextInputComponentProps) {
   const [currValue, setCurrValue] = useState(value);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,6 +17,7 @@ export function TailwindTextInput({onChange, label, value, placeholder, id}: Tex
           placeholder={placeholder}
           onChange={onChangeHandler}
           value={currValue}
+          style={style}
         />
       </div>
   )

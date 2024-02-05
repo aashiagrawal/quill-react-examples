@@ -8,7 +8,7 @@ type MantineTextInputProps = {
     placeholder: string,
 }
 
-export default function MantineTextInput({onChange, label, value, placeholder}: MantineTextInputProps) {
+export default function MantineTextInput({onChange, label, value, placeholder, style}: MantineTextInputProps) {
   
   const [currValue, setCurrValue] = useState(value);
 
@@ -24,7 +24,8 @@ export default function MantineTextInput({onChange, label, value, placeholder}: 
       placeholder={placeholder}
       onChange={onChangeHandler}
       value={currValue}
-      style={{width:"206px"}}
+      style={style}
+      // style={{width:"206px"}}
     />
   );
 }

@@ -3,7 +3,7 @@ import { Input } from 'antd';
 import { TextInputComponentProps } from '@quillsql/react/src/components/UiComponents';
 
 
-export function AntdTextInput({onChange, label, value, placeholder, id}: TextInputComponentProps) { 
+export function AntdTextInput({onChange, label, value, placeholder, id, style}: TextInputComponentProps) { 
     const [currValue, setCurrValue] = useState(value);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +17,7 @@ export function AntdTextInput({onChange, label, value, placeholder, id}: TextInp
         placeholder={placeholder} 
         onChange={onChangeHandler} 
         value={currValue} id={id} 
-        style={{width:"200px"}}
+        style={style}
         />
     )
 }

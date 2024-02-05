@@ -2,7 +2,7 @@ import { Input } from '@chakra-ui/react'
 import { TextInputComponentProps } from '@quillsql/react/src/components/UiComponents'
 import { useState } from 'react';
 
-export function ChakraTextInput({onChange, label, value, placeholder, id}: TextInputComponentProps) {
+export function ChakraTextInput({onChange, label, value, placeholder, id, style}: TextInputComponentProps) {
   const [currValue, setCurrValue] = useState(value);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,7 +12,7 @@ export function ChakraTextInput({onChange, label, value, placeholder, id}: TextI
   };
   return (
     <Input 
-    style={{width:"190px"}} 
+    style={style}
     onChange={onChangeHandler} 
     placeholder={placeholder} 
     value={currValue} 

@@ -8,7 +8,7 @@ type ShadcnInputProps = {
     placeholder?: string
   }
   
-export function TextInput({ onChange, value, id, placeholder }: ShadcnInputProps) {
+export function TextInput({ onChange, value, id, placeholder, style }: ShadcnInputProps) {
   const [currValue, setCurrValue] = useState(value);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +24,7 @@ export function TextInput({ onChange, value, id, placeholder }: ShadcnInputProps
       value={currValue} 
       id={id} 
       placeholder={placeholder} 
-      style={{width: "206px"}}
+      style={style}
       />
     </div>
   )

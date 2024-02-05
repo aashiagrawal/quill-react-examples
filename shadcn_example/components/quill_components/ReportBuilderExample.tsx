@@ -143,6 +143,7 @@ export default function ReportBuilderExample () {
                     onChange={onChange}
                     value={value}
                     id={id}
+                    style={{width: "206px"}}
                     />
                 </div>
                 )}
@@ -528,6 +529,7 @@ export default function ReportBuilderExample () {
                   label={label}
                   value={value}
                   placeholder={placeholder}
+                  style={{width:"206px"}}
                 />
               )}
               Select = {({
@@ -621,6 +623,7 @@ export default function ReportBuilderExample () {
                   value={value}
                   placeholder={placeholder}
                   id={id}
+                  style={{width: "200px"}}
                 />
               )}
               Select = {({options, onChange, value, label}) => (
@@ -699,6 +702,7 @@ export default function ReportBuilderExample () {
                     value={value}
                     placeholder={placeholder}
                     id={id}
+                    style={{width:"190px"}} 
                   />
                 )}
                 Select = {({options, onChange, value, label}) => (
@@ -777,6 +781,7 @@ export default function ReportBuilderExample () {
                     value={value}
                     placeholder={placeholder}
                     id={id}
+                    style={{width: "206px"}}
                   />
                 )}
                 Select = {({options, onChange, value, label}) => (

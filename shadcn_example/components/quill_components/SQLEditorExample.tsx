@@ -109,6 +109,7 @@ export default function SQLEditorExample () {
                   value={value}
                   id={id}
                   placeholder={placeholder}
+                  style={{width: "100%"}}
                   />
               </div>
               )}
@@ -209,7 +210,7 @@ export default function SQLEditorExample () {
                   label={label}
                   placeholder={placeholder}
                   variant="outlined"
-                  style={{ width: 230 }}
+                  style={{ width: "100%" }}
                 />
               ),
               (prevProps, nextProps) => {
@@ -453,6 +454,7 @@ export default function SQLEditorExample () {
                 label={label}
                 value={value}
                 placeholder={placeholder}
+                style={{width:"100%"}}
               />
             )}
             LoadingComponent = {() => (
@@ -528,6 +530,7 @@ export default function SQLEditorExample () {
                 value={value}
                 placeholder={placeholder}
                 id={id}
+                style={{width: "100%"}}
               />
             )}
             LoadingComponent={() => (
@@ -588,6 +591,7 @@ export default function SQLEditorExample () {
                 value={value}
                 placeholder={placeholder}
                 id={id}
+                style={{width:"100%"}} 
               />
             )}
             LoadingComponent={() => (
@@ -648,6 +652,7 @@ export default function SQLEditorExample () {
                 value={value}
                 placeholder={placeholder}
                 id={id}
+                style={{width: "100%"}}
               />
             )}
             LoadingComponent={() => (
